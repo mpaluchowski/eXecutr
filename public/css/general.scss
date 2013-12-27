@@ -1,0 +1,535 @@
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Helvetica, Verdana, sans-serif;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	font-size: 62.5%;
+	line-height: 1;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+	
+	&:before, &:after {
+		content: '';
+		content: none;
+	}
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Header */
+
+header#top-header {
+	background: #3f3f3f;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 60;
+
+	a {
+		text-decoration: none;
+	}
+
+	ul {
+		display: inline-block;
+
+		li {
+			display: inline-block;
+		}
+	}
+}
+
+#header-mainmenu {
+	padding: .1em 0;
+
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+	a {
+		color: #fff;
+	}
+}
+
+a#logo {
+	display: inline-block;
+	font: bold 1.3em Tahoma, sans-serif;
+	padding: .2em .6em;
+}
+
+div#inbox-notification {
+	float: right;
+	font-size: 1.2em;
+	font-weight: bold;
+	padding: .4em .6em;
+
+	a {
+		&:hover span#inbox-count {
+			background: #FFE87F;
+		}
+	}
+}
+
+span#inbox-count {
+	background: #f5f5f5;
+	color: #000;
+	border-radius: 2px;
+	padding: .2em .5em;
+}
+
+ul#add-items-menu {
+	margin: .2em 0 .2em 50px;
+
+	li {
+		margin: 0 .5em;
+	}
+
+	a {
+		font-size: 1.2em;
+		padding: .2em .8em .4em;
+
+		&:hover {
+			color: #FFE87F;
+		}
+	}
+}
+
+a, button {
+	.key-short {
+		font-weight: bold;
+	}
+}
+
+#header-submenu {
+    background: #f5f5f5;
+    clear: both;
+
+	ul {
+		margin: 0 20px 0 0;
+	}
+
+	li {
+	    a {
+	        color: #000;
+	        display: block;
+	        margin: .4em 0 .4em .3em;
+	        padding: .4em .6em;
+	        font-size: 1.2em;
+	        border-radius: 5px;
+	    }
+	}
+
+    a.off {
+        background: #e0e0e0;
+    }
+}
+
+#space-context-menu a {
+    background: #FFC47F;
+
+	&:hover {
+	   background: #FF8A00;
+	}
+}
+
+#time-context-menu a {
+    background: #FFE87F;
+
+	&:hover {
+        background: #FFD100;
+	}
+}
+
+/* The Floater */
+
+#floater {
+	background: #fff;
+	border-bottom: 1px solid #3F3F3F;
+	padding: 1em;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 80;
+}
+
+/* Forms */
+
+fieldset {
+    margin: 0 auto;
+    width: 71em;
+}
+
+input, textarea, select {
+	font: 1.2em Tahoma, Verdana, Helvetica, Arial, sans-serif;
+}
+
+label {
+	font-size: 1.1em;
+	display: block;
+}
+
+label input {
+	bottom: -.1em;
+    position: relative;
+}
+
+input[type=text], textarea, select {
+	background: #f0f0f0;
+	border: 0;
+	border-bottom: 1px solid #7f7f7f;
+	margin: .1em 0 .4em;
+	width: 100%;
+}
+
+    input[type=text].select {
+        background: #FFFABF;
+        border-bottom-style: dashed;
+    }
+    
+    select.extended {
+        background: #BFEEFF;
+        border-bottom-style: dashed;
+    }
+    
+    input[type=text][disabled=disabled] {
+        background: #FFF;
+        border: 1px solid #000;
+    }
+
+button {
+	border: 0;
+	border-radius: 5px;
+	font: 1.2em Tahoma, Verdana, Helvetica, Arial, sans-serif;
+	margin: 0 .1em;
+	padding: .3em;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+    &.eject-button {
+        background: #FF7F7F;
+        font-size: 1.1em;
+        padding: .2em;
+    }
+
+	&[type=submit] {
+		&.default-button {
+			background: #BBFF4F;
+			font-size: 1.4em;
+			padding: .3em 1em;
+			margin-top: .4em;
+		}
+
+	    &.submitted {
+	        background: #A7DF8B;
+	    }
+	}
+}
+
+form {
+	.label {
+	    display: block;
+	    font-size: 1.1em;
+	    padding: .2em 0;
+	}
+
+	.field {
+		background: #f0f0f0;
+	    display: block;
+	    font: 1.2em Tahoma, Verdana, Helvetica, Arial, sans-serif;
+	    margin: .1em 0 .4em;
+	    padding: .3em .5em;
+	}
+
+	.question {
+		display: block;
+		text-align: center;
+		font-size: 1.4em;
+		font-weight: bold;
+		margin: .8em 0;
+	}
+}
+
+table.form {
+	width: 100%;
+
+	td {
+	    padding: .2em .3em;
+	}
+
+	.title {
+		display: block;
+		font-size: 1.2em;
+		font-weight: bold;
+		margin-bottom: .6em;
+		text-align: center;
+	}
+	
+	tbody.extension {
+	   background: #F3FFDF;
+	}
+}
+
+#recurrence-options {
+	background: #EFF8FF;
+	line-height: 300%;
+
+    label, .label, input, select {
+        display: inline;
+        width: auto;
+    }
+}
+
+/* Autocomplete */
+
+ul.ui-autocomplete {
+	background: #FFFABF;
+
+    li.ui-menu-item a {
+    	display: block;
+        font: 1.2em Tahoma, Verdana, Helvetica, Arial, sans-serif;
+        padding: .25em .5em;
+    }
+    
+    a.ui-state-hover {
+        background: #FFE900;
+    }
+}
+
+ul.autocomplete-added, ul.inline-added {
+	margin: .6em 0 .4em;
+
+	li {
+		border-radius: 2px;
+		font-size: 1.1em;
+		padding: .4em .4em;
+		margin-bottom: .4em;
+		position: relative;
+	}
+
+	a {
+		border-radius: 2px;
+		color: #000;
+		display: block;
+		position: absolute;
+		font-weight: bold;
+		padding: .2em .4em;
+		text-decoration: none;
+		right: .2em;
+		top: .2em;
+
+		&:hover {
+			background: #000;
+			color: #FFF;
+		}
+	}
+}
+
+	ul.autocomplete-added li {
+		background: #FFFABF;
+	}
+
+	ul.inline-added li {
+		background: #F0F0F0;
+	}
+
+/* Main content area */
+
+#main {
+	margin-top: 50px;
+
+	h2 {
+		border-bottom: 1px solid #F0F0F0;
+		font-size: 1.4em;
+		margin: .6em 0 .6em;
+		padding: .2em;
+	}
+
+	h3 {
+		border-bottom: 1px solid #AFAFAF;
+		font-size: 1.2em;
+		font-weight: bold;
+		margin: 1.2em 0;
+		padding: .2em;
+	}
+}
+
+#main, #floater {
+	h1, h2, h3 {
+		font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif;
+	}
+
+	h1 {
+		font-size: 1.4em;
+		font-weight: bold;
+		padding: 0 .5em .5em .2em;
+	}
+}
+
+table.report {
+	width: 100%;
+
+	td {
+		border-bottom: 1px solid #f0f0f0;
+		padding: 0;
+		vertical-align: middle;
+
+		&:first-child {
+			width: 2.4em;
+		}
+		
+		&:last-child {
+			text-align: right;
+			white-space: nowrap;
+		}
+	}
+
+	a {
+		font-size: 1.2em;
+	}
+
+	tr:hover {
+		background: #f0f0f0;
+		
+		> td > .properties-float {
+			display: block;
+		}
+	}
+}
+
+a.recurrence-button {
+	background: #fff;
+	padding: .1em .3em;
+	text-decoration: none;
+}
+
+a.table-cell-button {
+	color: #000;
+	display: block;
+	text-decoration: none;
+	padding: .4em 0;
+
+	&:hover {
+		background: #CFCFCF;
+	}
+}
+
+td > .properties-float {
+	display: none;
+	position: relative;
+	z-index: 100;
+}
+
+	.properties-float > .inner-float {
+		position: absolute;
+		left: 0;
+		right: 0;
+	}
+
+a.project-button, div.description-button {
+    border-right: 1px solid #cfcfcf;
+	color: #000;
+	display: block;
+	line-height: 140%;
+	text-decoration: none;
+	padding: .4em .6em;
+
+	&:last-child {
+		border-bottom: 1px solid #cfcfcf;
+		border-radius: 0 0 5px 5px;
+	}
+}
+
+a.project-button {
+	background: #DFF1FF;
+
+	&:hover {
+		background: #8FCDFF;
+	}
+}
+
+div.description-button {
+	background: #D4FFBF;
+	font-size: 1.2em;
+}
+
+a.recurrence-button {
+	border: 1px solid #FF2F2F;
+	color: #DF0000;
+
+	&:hover {
+		background: #FF8F8F;
+	}
+}
+
+.deadline {
+	color: #5f5f5f;
+    font-size: .9em;
+
+    &.soon {
+        color: #EFAE00;
+    }
+    
+    &.past {
+        color: #ff0000;
+    }
+    
+    &.today {
+        color: #1AAF00;
+    }
+}
+
+/* Columns */
+
+.col {
+	box-sizing: border-box;
+	padding: 1.2em;
+	position: relative;
+}
+
+.columns-2 .col {
+	float: left;
+	width: 50%;
+}
+
+/* EOF */
