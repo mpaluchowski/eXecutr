@@ -33,7 +33,7 @@ class Main
 
 		\F3::set('categories', $actionModel->getCategories());
 
-		echo \View::instance()->render('main/create_parent.php', $vars);
+		echo \View::instance()->render('main/create_parent.php');
 	}
 
 	public function save_inbox_item($f3) {
