@@ -545,7 +545,7 @@ class Action {
         $st = \F3::get('db')->prepare($query);
         
         foreach ($props['parentIds'] as $parentId) {
-        	\F3::get('db')->exec($st, array(
+        	$st->execute(array(
        			'itemId' 	=> $newItemId,
        			'parentId' => $parentId
        		));
@@ -627,7 +627,7 @@ class Action {
         foreach ($props['parentIds'] as $parentId) {
             /* Omit existing parent id's */
             if (false == array_search($parentId, $existingParentIds)) {
-            	\F3::get('db')->exec($st, array(
+            	$st->execute(array(
 	       			'itemId' 	=> $itemId,
 	       			'parentId' => $parentId
 	       		));
