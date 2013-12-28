@@ -229,7 +229,7 @@ class Action {
             }
 	        
             /* Fetch the next date */
-	        $newDate = RecurrenceTool::getNextRecurrence(
+	        $newDate = \helpers\RecurrenceTool::getNextRecurrence(
                     $row['recur'], $startdate);
             
             if (!empty($newDate)) {

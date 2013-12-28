@@ -1,6 +1,8 @@
 <?php
 namespace helpers;
 
+require_once 'iCalcreator.php';
+
 class RecurrenceTool {
     
     /**
