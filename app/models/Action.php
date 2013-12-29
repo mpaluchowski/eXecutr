@@ -496,7 +496,7 @@ class Action {
                           :recurDesc)';
        	\F3::get('db')->exec($query, array(
        			'title' 		=> $props['title'],
-       			'description' 	=> $props['description'],
+       			'description' 	=> empty($props['description']) ? '' : $props['description'],
        			'outcome' 		=> empty($props['outcome']) ? null : $props['outcome'],
        			'recur' 		=> empty($props['recurrence']['recur']) ? null : $props['recurrence']['recur'],
        			'recurDesc' 	=> empty($props['recurrence']['recurDesc']) ? null : $props['recurrence']['recurDesc']
