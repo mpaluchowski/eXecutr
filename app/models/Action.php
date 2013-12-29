@@ -498,8 +498,8 @@ class Action {
        			'title' 		=> $props['title'],
        			'description' 	=> empty($props['description']) ? '' : $props['description'],
        			'outcome' 		=> empty($props['outcome']) ? null : $props['outcome'],
-       			'recur' 		=> empty($props['recurrence']['recur']) ? null : $props['recurrence']['recur'],
-       			'recurDesc' 	=> empty($props['recurrence']['recurDesc']) ? null : $props['recurrence']['recurDesc']
+       			'recur' 		=> empty($props['recur']) ? null : $props['recur'],
+       			'recurDesc' 	=> empty($props['recurDesc']) ? null : $props['recurDesc']
        		));
         
         $newItemId = \F3::get('db')->lastInsertID();
