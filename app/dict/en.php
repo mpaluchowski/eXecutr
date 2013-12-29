@@ -47,6 +47,14 @@ return ['lang' => array(
 	'Until' => 'until',
 	'DayOfMonth' => 'day of month',
 	'DayOfWeek' => 'day of week',
+
+	'Mon' => 'Mon',
+	'Tue' => 'Tue',
+	'Wed' => 'Wed',
+	'Thu' => 'Thu',
+	'Fri' => 'Fri',
+	'Sat' => 'Sat',
+	'Sun' => 'Sun',
 	
 	'InboxNotificationLabel' => 'Inbox',
 	'InboxNotificationTitle' => 'Process Inbox',
