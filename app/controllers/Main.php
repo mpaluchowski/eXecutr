@@ -143,7 +143,7 @@ class Main
 	public function save_reference($f3) {
 		$actionModel = new \models\Action();
 
-		if (!empty($f3->get('POST.createParent'))) {
+		if ($f3->get('POST.createParent')) {
 			/* Parent creation requested */
 			$projectId = $actionModel->createItem(array(
 					'type' => 'p',
@@ -173,7 +173,7 @@ class Main
 				)
 			);
 
-		if (!empty($f3->get('POST.nextAction')))
+		if ($f3->get('POST.nextAction'))
 			$f3->reroute($f3->get('POST.nextAction'));
 		else if (!$f3->get('AJAX'))
 			$f3->reroute('/main/index');
@@ -182,7 +182,7 @@ class Main
 	public function save_list($f3) {
 		$actionModel = new \models\Action();
 
-		if (!empty($f3->get('POST.createParent'))) {
+		if ($f3->get('POST.createParent')) {
 			/* Parent creation requested */
 			$projectId = $actionModel->createItem(array(
 					'type' => 'p',
@@ -221,7 +221,7 @@ class Main
 		}
 
 		/* Move on to next requested action, or to main page */
-		if (!empty($f3->get('POST.nextAction')))
+		if ($f3->get('POST.nextAction'))
 			$f3->reroute($f3->get('POST.nextAction'));
 		else if (!$f3->get('AJAX'))
 			$f3->reroute('/main/index');
@@ -242,7 +242,7 @@ class Main
 			);
 
 		/* Move on to next requested action, or to main page */
-		if (!empty($f3->get('POST.nextAction')))
+		if ($f3->get('POST.nextAction'))
 			$f3->reroute($f3->get('POST.nextAction'));
 		else if (!$f3->get('AJAX'))
 			$f3->reroute('/main/index');
@@ -251,7 +251,7 @@ class Main
 	public function save_action($f3) {
 		$actionModel = new \models\Action();
 
-		if (!empty($f3->get('POST.createParent'))) {
+		if ($f3->get('POST.createParent')) {
 			/* Parent creation requested */
 			$projectId = $actionModel->createItem(array(
 					'type' => 'p',
@@ -287,13 +287,13 @@ class Main
 				'recurDesc' => $recurrence['recurDesc'],
 				'categoryId' => $f3->get('POST.categoryId')
 			);
-		if (null === $f3->get('POST.itemId') || empty($f3->get('POST.itemId')))
+		if (!$f3->get('POST.itemId'))
 			$actionModel->createItem($actionProps);
 		else
 			$actionModel->updateItem($f3->get('POST.itemId'), $actionProps);
 
 		/* Choose next action */
-		if (!empty($f3->get('POST.nextAction')))
+		if ($f3->get('POST.nextAction'))
 			$f3->reroute($f3->get('POST.nextAction'));
 		else if (!$f3->get('AJAX'))
 			$f3->reroute('/main/index');
@@ -302,7 +302,7 @@ class Main
 	public function save_waiting_for($f3) {
 		$actionModel = new \models\Action();
 
-		if (!empty($f3->get('POST.createParent'))) {
+		if ($f3->get('POST.createParent')) {
 			/* Parent creation requested */
 			$projectId = $actionModel->createItem(array(
 					'type' => 'p',
@@ -335,13 +335,13 @@ class Main
 				'recurDesc' => $recurrence['recurDesc'],
 				'categoryId' => $f3->get('POST.categoryId')
 			);
-		if (null === $f3->get('POST.itemId') || empty($f3->get('POST.itemId')))
+		if (!$f3->get('POST.itemId'))
 			$actionModel->createItem($waitingForProps);
 		else
 			$actionModel->updateItem($f3->get('POST.itemId'), $waitingForProps);
 
 		/* Choose next action */
-		if (!empty($f3->get('POST.nextAction')))
+		if ($f3->get('POST.nextAction'))
 			$f3->reroute($f3->get('POST.nextAction'));
 		else if (!$f3->get('AJAX'))
 			$f3->reroute('/main/index');
@@ -367,12 +367,12 @@ class Main
 				'recurDesc' => $recurrence['recurDesc'],
 				'categoryId' => $f3->get('POST.categoryId')
 			];
-		if (null === $f3->get('POST.itemId') || empty($f3->get('POST.itemId')))
+		if (!$f3->get('POST.itemId'))
 			$actionModel->createItem($projectProps);
 		else
 			$actionModel->updateItem($f3->get('POST.itemId'), $projectProps);
 
-		if (!empty($f3->get('POST.nextAction')))
+		if ($f3->get('POST.nextAction'))
 			$f3->reroute(
 					$f3->get('POST.nextAction')
 					. '?parentId=' . $f3->get('POST.itemId')
