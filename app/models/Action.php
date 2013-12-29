@@ -133,13 +133,13 @@ class Action {
 	                AND its.dateCompleted IS NULL
 	              ORDER BY its.dateCreated
 	              LIMIT 1';
-	    $row = \F3::get('db')->exec($query)[0];
+	    $rows = \F3::get('db')->exec($query);
         
-        return $row
+        return $rows
         	? (object)array(
-        			'itemId' 		=> $row['itemId'],
-        			'title'			=> $row['title'],
-        			'description'	=> $row['description']
+        			'itemId' 		=> $rows[0]['itemId'],
+        			'title'			=> $rows[0]['title'],
+        			'description'	=> $rows[0]['description']
         		)
         	: null;
 	}
@@ -148,15 +148,15 @@ class Action {
 	    $query = 'SELECT it.itemId, it.title, it.description
                   FROM ' . \F3::get('db_table_prefix') . 'items it
                   WHERE it.itemId = :itemId';
-        $row = \F3::get('db')->exec($query, array(
+        $rows = \F3::get('db')->exec($query, array(
     			'itemId' => $itemId
-    		))[0];
+    		));
 	    
-        return $row
+        return $rows
         	? (object)array(
-        			'itemId' 		=> $row['itemId'],
-        			'title'			=> $row['title'],
-        			'description'	=> $row['description']
+        			'itemId' 		=> $rows[0]['itemId'],
+        			'title'			=> $rows[0]['title'],
+        			'description'	=> $rows[0]['description']
         		)
         	: null;
 	}
@@ -461,21 +461,21 @@ class Action {
                   JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
                     ON it.itemId = its.itemId
                   WHERE it.itemId = :itemId';
-		$row = \F3::get('db')->exec($query, array(
+		$rows = \F3::get('db')->exec($query, array(
     			'itemId' => $itemId
-    		))[0];
+    		));
 	    
-        return $row
+        return $rows
         	? (object)array(
-        			'itemId' 			=> $row['itemId'],
-        			'title'				=> $row['title'],
-        			'desiredOutcome'	=> $row['desiredOutcome'],
-        			'recur'				=> $row['recur'],
-					'recurdesc'			=> $row['recurdesc'],
-					'categoryId'		=> $row['categoryId'],
-					'contextId'			=> $row['contextId'],
-					'timeframeId'		=> $row['timeframeId'],
-					'deadline'			=> $row['deadline']
+        			'itemId' 			=> $rows[0]['itemId'],
+        			'title'				=> $rows[0]['title'],
+        			'desiredOutcome'	=> $rows[0]['desiredOutcome'],
+        			'recur'				=> $rows[0]['recur'],
+					'recurdesc'			=> $rows[0]['recurdesc'],
+					'categoryId'		=> $rows[0]['categoryId'],
+					'contextId'			=> $rows[0]['contextId'],
+					'timeframeId'		=> $rows[0]['timeframeId'],
+					'deadline'			=> $rows[0]['deadline']
         		)
         	: null;
 	}
