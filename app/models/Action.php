@@ -77,6 +77,7 @@ class Action {
 		$sql = 'SELECT it.itemId AS actionId,
 		               it.title,
                        it.description,
+                       it.recurdesc,
                        its.deadline,
 		               GROUP_CONCAT(DISTINCT it2.title ORDER BY it2.title SEPARATOR "; ") AS parentTitles
 				FROM ' . \F3::get('db_table_prefix') . 'itemstatus its
@@ -110,7 +111,8 @@ class Action {
 					'title'			=> $row['title'],
 					'parentTitles'	=> $row['parentTitles'],
 					'description'	=> $row['description'],
-					'deadline'		=> $row['deadline']
+					'deadline'		=> $row['deadline'],
+            		'recurdesc'		=> $row['recurdesc']
 				);
         
         return $waitingFors;
