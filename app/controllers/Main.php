@@ -287,7 +287,7 @@ class Main
 				'recurDesc' => $recurrence['recurDesc'],
 				'categoryId' => $f3->get('POST.categoryId')
 			);
-		if (null !== $f3->get('POST.itemId') || empty($f3->get('POST.itemId')))
+		if (null === $f3->get('POST.itemId') || empty($f3->get('POST.itemId')))
 			$actionModel->createItem($actionProps);
 		else
 			$actionModel->updateItem($f3->get('POST.itemId'), $actionProps);
@@ -335,7 +335,7 @@ class Main
 				'recurDesc' => $recurrence['recurDesc'],
 				'categoryId' => $f3->get('POST.categoryId')
 			);
-		if (null !== $f3->get('POST.itemId') || empty($f3->get('POST.itemId')))
+		if (null === $f3->get('POST.itemId') || empty($f3->get('POST.itemId')))
 			$actionModel->createItem($waitingForProps);
 		else
 			$actionModel->updateItem($f3->get('POST.itemId'), $waitingForProps);
@@ -367,7 +367,7 @@ class Main
 				'recurDesc' => $recurrence['recurDesc'],
 				'categoryId' => $f3->get('POST.categoryId')
 			];
-		if (null !== $f3->get('POST.itemId') || empty($f3->get('POST.itemId')))
+		if (null === $f3->get('POST.itemId') || empty($f3->get('POST.itemId')))
 			$actionModel->createItem($projectProps);
 		else
 			$actionModel->updateItem($f3->get('POST.itemId'), $projectProps);
