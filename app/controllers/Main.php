@@ -42,10 +42,11 @@ class Main
 				$f3->get('POST.title'),
 				$f3->get('POST.description')
 			);
-		
-		$f3->set('inboxItems', $actionModel->getInboxItemCount());
-		
-		echo \View::instance()->render('components/inbox_notification.php');
+	}
+
+	public function get_inbox_item_count($f3) {
+		$actionModel = new \models\Action();
+		echo $actionModel->getInboxItemCount();
 	}
 
 	public function process_inbox($f3) {

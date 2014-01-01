@@ -128,9 +128,14 @@ eXecutr.Global = function() {
 				});
 				/* If there was a next action planned, load next form */
 				if ( data && '' !== data ) {
-					// $("#inbox-notification").html(data);
 					$( floater ).html( data );
 					initFloater( floater );
+				}
+				/* Update inbox count, if new inbox item was created */
+				if ( null !== $(form).attr('action').match(/save_inbox_item/) ) {
+					$.get( 'main/get_inbox_item_count', function(data) {
+						$( "#inbox-count" ).html(data);
+					}, 'html');
 				}
 			});
 		});
