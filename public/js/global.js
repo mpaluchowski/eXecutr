@@ -91,7 +91,6 @@ eXecutr.Global = function() {
 
 			initFloater(floater);
 			
-			$(floater).slideDown(150);
 		}, "html");
 	},
 
@@ -103,6 +102,8 @@ eXecutr.Global = function() {
 		initParentAutocomplete();
 
 		$("input.datepicker", floater).applyDatePicker();
+		
+		$(floater).slideDown(150);
 		
 		/* Show the form and focus in first field */
 		$(":input:visible:enabled:first", floater).focus();
