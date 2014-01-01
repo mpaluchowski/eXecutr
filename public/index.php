@@ -3,6 +3,7 @@
 $f3 = require('../lib/base.php');
 
 // Set path-related options
+$f3->set('ROOT', realpath('../'));
 $f3->set('AUTOLOAD', '../lib/;../app/');
 $f3->set('UI', '../app/ui/');
 $f3->set('LOCALES','../app/dict/');
