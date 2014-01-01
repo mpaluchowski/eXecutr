@@ -89,7 +89,7 @@ class Items
 		} else {
 			$f3->set('nextActions', $flowController->getNextActions('projectCreate', 0));
 			$f3->set('flow', 'projectCreate');
-			$f3->set('flowStep', 0);
+			$f3->set('flowStep', 1);
 		}
 
 		if ($f3->get('AJAX'))
