@@ -368,13 +368,13 @@ class Main
 				'categoryId' => $f3->get('POST.categoryId')
 			];
 		if (!$f3->get('POST.itemId'))
-			$actionModel->createItem($projectProps);
+			$newItemId = $actionModel->createItem($projectProps);
 		else
 			$actionModel->updateItem($f3->get('POST.itemId'), $projectProps);
 
 		if ($f3->get('POST.nextAction')) {
 			
-			$query['parentId'] = $f3->get('POST.itemId');
+			$query['parentId'] = $f3->get('POST.itemId') ? $f3->get('POST.itemId') : $newItemId;
 			if ($f3->get('POST.flow')) {
 				$query['flow'] = $f3->get('POST.flow');
 				$query['flowStep'] = $f3->get('POST.flowStep');

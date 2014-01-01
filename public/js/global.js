@@ -88,37 +88,51 @@ eXecutr.Global = function() {
 			var floater = $('<div id="floater"></div>').html(data);
 			$('body').append(floater);
 			$(floater).hide().css({'top' : $("#header-mainmenu").outerHeight() + 'px'});
-			
-			/* Enable closing the form with Esc */
-			$('#floater, #floater :input').bind("keydown", "esc", closeFloater);
-			
-			hideRecurrenceBlock();
-			initParentAutocomplete();
 
-			$("input.datepicker", floater).applyDatePicker();
+			initFloater(floater);
 			
-			/* Show the form and focus in first field */
-			$(floater).slideDown(150);
-			$(":input:visible:enabled:first", floater).focus();
-			
-			/* Handle submission by AJAX */
-			$("button[type=submit]", floater).click(function(e) {
-				e.preventDefault();
-				var self = this;
-				var form = $(this).closest("form");
-				$.post($(form).attr('action'), $(form).serialize(), function(data) {
-					/* Confirm submission, clear form for next entry */
-					$(form).clearForm(true);
-					$('#item-parents > li').remove();
-					$(":input:visible:enabled:first", floater).focus();
-					$(self).addClass('submitted', 400, function() {
-						$(self).removeClass('submitted', 400);
-					});
-					if (data && '' !== data)
-						$("#inbox-notification").html(data);
-				});
-			});
 		}, "html");
+	},
+
+	initFloater = function(floater) {
+		/* Enable closing the form with Esc */
+		$('#floater, #floater :input').bind("keydown", "esc", closeFloater);
+		
+		hideRecurrenceBlock();
+		initParentAutocomplete();
+
+		$("input.datepicker", floater).applyDatePicker();
+		
+		/* Show the form and focus in first field */
+		$(floater).slideDown(150);
+		$(":input:visible:enabled:first", floater).focus();
+		
+		/* Handle submission by AJAX */
+		$("button[type=submit]", floater).click(function(e) {
+			e.preventDefault();
+			var self = this;
+			var form = $(this).closest("form");
+
+			/* Need to append button value, since serializeArray() doesn't do that */
+			var formData = $( form ).serializeArray();
+			formData.push({ name: self.name, value: self.value });
+
+			$.post($(form).attr('action'), formData, function(data) {
+				/* Confirm submission, clear form for next entry */
+				$(form).clearForm(true);
+				$('#item-parents > li').remove();
+				$(":input:visible:enabled:first", floater).focus();
+				$(self).addClass('submitted', 400, function() {
+					$(self).removeClass('submitted', 400);
+				});
+				/* If there was a next action planned, load next form */
+				if ( data && '' !== data ) {
+					// $("#inbox-notification").html(data);
+					$( floater ).html( data );
+					initFloater( floater );
+				}
+			});
+		});
 	},
 
 	closeFloater = function(callback, callbackData) {
