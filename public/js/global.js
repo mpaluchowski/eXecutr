@@ -91,6 +91,7 @@ eXecutr.Global = function() {
 
 			initFloater(floater);
 			
+			$(floater).slideDown(150);
 		}, "html");
 	},
 
@@ -104,7 +105,6 @@ eXecutr.Global = function() {
 		$("input.datepicker", floater).applyDatePicker();
 		
 		/* Show the form and focus in first field */
-		$(floater).slideDown(150);
 		$(":input:visible:enabled:first", floater).focus();
 		
 		/* Handle submission by AJAX */
