@@ -30,7 +30,7 @@ if (isset($parentItems))
 <?php endforeach; ?>
 <?php endif; ?>
             </ul>
-            <input type="text" id="parent-name" name="parentName" class="select" data-url="main/create_parent">
+            <input type="text" id="parent-name" name="parentName" class="select" data-url="main/create_parent" data-autocomplete="main/find_parents">
         </td>
     </tr>
 </tbody>
@@ -101,8 +101,6 @@ if (isset($parentItems))
 </table>
 
     <input type="hidden" name="itemId" value="<?php if (isset($item)) echo $item->itemId ?>" />
-    
-    <input type="hidden" name="autoCompleteSource" id="autocomplete-source" value="main/find_parents"/>
 
 <?php echo \View::instance()->render('components/next_action_buttons.php') ?>
 

@@ -141,7 +141,7 @@ eXecutr.Global = function() {
 		});
 
 		$('#parent-name').autocomplete({
-			source : $('#autocomplete-source').attr('value'),
+			source : $( '#parent-name' ).attr( 'data-autocomplete' ),
 			minLength : 3,
 			focus: function( event, ui ) {
 				$( "#parent-name" ).val( ui.item.title );

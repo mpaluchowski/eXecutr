@@ -15,7 +15,7 @@
         <td colspan="2">
             <label for="parent-name"><?php echo Base::instance()->get('lang.ItemParentLabel') ?></label>
             <ul id="item-parents" class="autocomplete-added"></ul>
-            <input type="text" id="parent-name" name="parentName" class="select" />
+            <input type="text" id="parent-name" name="parentName" class="select" data-autocomplete="main/find_parents">
         </td>
     </tr>
 </tbody>
@@ -67,8 +67,6 @@
 
     <input type="hidden" name="itemId" value="<?php if (isset($item)) echo $item->itemId ?>" />
     
-    <input type="hidden" name="autoCompleteSource" id="autocomplete-source" value="main/find_parents"/>
-
     <?php echo View::instance()->render('components/next_action_buttons.php') ?>
 
 </fieldset>

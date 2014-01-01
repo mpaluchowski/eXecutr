@@ -21,7 +21,7 @@
         <td>
             <label for="parent-name"><?php echo Base::instance()->get('lang.ItemParentLabel') ?></label>
             <ul id="item-parents" class="autocomplete-added"></ul>
-            <input type="text" id="parent-name" name="parentName" class="select" />
+            <input type="text" id="parent-name" name="parentName" class="select" data-autocomplete="main/find_parent_lists">
         </td>
     </tr>
 </tbody>
@@ -36,7 +36,6 @@
 </table>
 
     <input type="hidden" name="itemId" value="<?php echo $item->itemId ?>" />
-    <input type="hidden" name="autoCompleteSource" id="autocomplete-source" value="main/find_parent_lists"/>
 
     <?php echo View::instance()->render('components/next_action_buttons.php') ?>
 
