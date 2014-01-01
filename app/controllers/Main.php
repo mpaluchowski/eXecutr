@@ -372,16 +372,23 @@ class Main
 		else
 			$actionModel->updateItem($f3->get('POST.itemId'), $projectProps);
 
-		if ($f3->get('POST.nextAction'))
+		if ($f3->get('POST.nextAction')) {
+			
+			$query['parentId'] = $f3->get('POST.itemId');
+			if ($f3->get('POST.flow')) {
+				$query['flow'] = $f3->get('POST.flow');
+				$query['flowStep'] = $f3->get('POST.flowStep');
+			}
+
 			$f3->reroute(
 					$f3->get('POST.nextAction')
-					. '?parentId=' . $f3->get('POST.itemId')
-					. (null !== $f3->get('POST.flow')
-						? '&flow=' . $f3->get('POST.flow') . '&flowStep=' . $f3->get('POST.flowStep')
-						: '')
+					. '?'
+					. http_build_query($query)
 				);
-		else if (!$f3->get('AJAX'))
+
+		} else if (!$f3->get('AJAX')) {
 			$f3->reroute('/main/index');
+		}
 	}
 
 }
