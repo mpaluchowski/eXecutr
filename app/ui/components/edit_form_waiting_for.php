@@ -26,6 +26,7 @@ if (isset($parentItems))
                 <li>
                     <?php echo $parentItem->title ?>
                     <input type="hidden" name="parentIds[]" value="<?php echo $parentItem->itemId ?>">
+                    <a href="#">x</a>
                 </li>
 <?php endforeach; ?>
 <?php endif; ?>
