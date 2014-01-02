@@ -27,4 +27,15 @@ class HumaneDateView
             return date("M j, Y", strtotime($date));
     }
 
+    public static function getDeadlineClass($date) {
+        if ($date == date('Y-m-d'))
+            return "today";
+        else if ($date < date('Y-m-d'))
+            return "past";
+        else if ($date <= date('Y-m-d', strtotime("+7 days")))
+            return "soon";
+        else
+            return "";
+    }
+
 }

@@ -28,16 +28,8 @@
         <td>
 <?php
   if (!empty($action->deadline)):
-    if ($action->deadline == date('Y-m-d'))
-        $class = "today";
-    else if ($action->deadline < date('Y-m-d'))
-        $class = "past";
-    else if ($action->deadline <= date('Y-m-d', strtotime("+7 days")))
-        $class = "soon";
-    else
-        $class = "";
 ?>
-        <span class="deadline <?php echo $class ?>"><?php echo \helpers\HumaneDateView::getHumanReadable($action->deadline) ?></span>
+        <span class="deadline <?php echo \helpers\HumaneDateView::getDeadlineClass($action->deadline) ?>"><?php echo \helpers\HumaneDateView::getHumanReadable($action->deadline) ?></span>
 <?php
   endif;
   if (!empty($action->recurdesc)):
@@ -77,16 +69,8 @@
       <td>
 <?php
   if (!empty($waitingFor->deadline)):
-    if ($waitingFor->deadline == date('Y-m-d'))
-        $class = "today";
-    else if ($waitingFor->deadline < date('Y-m-d'))
-        $class = "past";
-    else if ($waitingFor->deadline <= date('Y-m-d', strtotime("+7 days")))
-        $class = "soon";
-    else
-        $class = "";
 ?>
-        <span class="deadline <?php echo $class ?>"><?php echo \helpers\HumaneDateView::getHumanReadable($waitingFor->deadline) ?></span>
+        <span class="deadline <?php echo \helpers\HumaneDateView::getDeadlineClass($waitingFor->deadline) ?>"><?php echo \helpers\HumaneDateView::getHumanReadable($waitingFor->deadline) ?></span>
 <?php
   endif;
   if (!empty($waitingFor->recurdesc)):
