@@ -488,14 +488,15 @@ div.description-button {
 }
 
 a.recurrence-button {
-	background: #fff;
-	border: 1px solid #FF2F2F;
-	color: #DF0000;
-	padding: .1em .3em;
+	background: #f0f0f0;
+	border-radius: 50%;
+	color: #414141;
+	padding: .2em .5em;
 	text-decoration: none;
 
 	&:hover {
-		background: #FF8F8F;
+		background: #FFE87F;
+		cursor: help;
 	}
 }
 
