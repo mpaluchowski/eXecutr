@@ -4,7 +4,7 @@
 <div id="main" class="columns-2" role="main">
 
   <div id="next-actions" class="col">
-    <h2><?php echo Base::instance()->get('NextActionsTitle') ?></h2>
+    <h2><?php echo Base::instance()->get('lang.NextActionsTitle') ?></h2>
 
     <form method="post" action="main/mark_completed" class="completion-form">
 <?php $i = 0; foreach($nextActions as $space => $actions): ++$i; ?>
@@ -48,7 +48,7 @@
   </div>
   <div id="waiting-fors" class="col">
 
-    <h2><?php echo Base::instance()->get('WaitingForsTitle') ?></h2>
+    <h2><?php echo Base::instance()->get('lang.WaitingForsTitle') ?></h2>
 
     <form method="post" action="main/mark_completed" class="completion-form">
     <table class="report">
