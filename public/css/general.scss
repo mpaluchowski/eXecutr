@@ -437,12 +437,6 @@ table.report {
 	}
 }
 
-a.recurrence-button {
-	background: #fff;
-	padding: .1em .3em;
-	text-decoration: none;
-}
-
 a.table-cell-button {
 	color: #000;
 	display: block;
@@ -494,8 +488,11 @@ div.description-button {
 }
 
 a.recurrence-button {
+	background: #fff;
 	border: 1px solid #FF2F2F;
 	color: #DF0000;
+	padding: .1em .3em;
+	text-decoration: none;
 
 	&:hover {
 		background: #FF8F8F;
