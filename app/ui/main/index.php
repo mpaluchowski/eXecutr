@@ -29,7 +29,7 @@
 <?php
   if (!empty($action->deadline)):
 ?>
-        <span class="deadline <?php echo \helpers\HumaneDateView::getDeadlineClass($action->deadline) ?>"><?php echo \helpers\HumaneDateView::getHumanReadable($action->deadline) ?></span>
+        <span class="deadline <?php echo \helpers\HumaneDateView::getDeadlineClass($action->deadline) ?>" title="<?php echo date("F j, Y", strtotime($action->deadline)) ?>"><?php echo \helpers\HumaneDateView::getHumanReadable($action->deadline) ?></span>
 <?php
   endif;
   if (!empty($action->recurdesc)):
@@ -70,7 +70,7 @@
 <?php
   if (!empty($waitingFor->deadline)):
 ?>
-        <span class="deadline <?php echo \helpers\HumaneDateView::getDeadlineClass($waitingFor->deadline) ?>"><?php echo \helpers\HumaneDateView::getHumanReadable($waitingFor->deadline) ?></span>
+        <span class="deadline <?php echo \helpers\HumaneDateView::getDeadlineClass($waitingFor->deadline) ?>" title="<?php echo date("F j, Y", strtotime($waitingFor->deadline)) ?>"><?php echo \helpers\HumaneDateView::getHumanReadable($waitingFor->deadline) ?></span>
 <?php
   endif;
   if (!empty($waitingFor->recurdesc)):
