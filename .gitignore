@@ -1,4 +1,9 @@
+# Sublime Test files
 *.sublime-*
+# SASS cache and CSS output
 *.css
-app/config.ini
+.sass-cache/
+# Fatfree API documentation
 lib/api/
+# Local app configuration
+app/config.ini
