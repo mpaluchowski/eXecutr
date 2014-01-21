@@ -27,14 +27,6 @@ class Main
 		echo \View::instance()->render('main/create_parent.php');
 	}
 
-	public function save_inbox_item($f3) {
-		$actionModel = new \models\Action();
-		$actionModel->createInboxItem(
-				$f3->get('POST.title'),
-				$f3->get('POST.description')
-			);
-	}
-
 	public function get_inbox_item_count($f3) {
 		$actionModel = new \models\Action();
 		echo $actionModel->getInboxItemCount();

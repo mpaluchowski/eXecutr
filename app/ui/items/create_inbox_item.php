@@ -1,4 +1,4 @@
-<form method="post" action="main/save_inbox_item" class="edition-form">
+<form method="post" action="items/save_inbox_item" class="edition-form">
 <fieldset>
 
 <table class="form">

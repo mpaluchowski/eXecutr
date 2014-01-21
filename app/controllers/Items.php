@@ -8,6 +8,14 @@ class Items
 		echo \View::instance()->render('items/create_inbox_item.php');
 	}
 
+	public function save_inbox_item($f3) {
+		$actionModel = new \models\Action();
+		$actionModel->createInboxItem(
+				$f3->get('POST.title'),
+				$f3->get('POST.description')
+			);
+	}
+
 	public function create_action($f3) {
 		$actionModel = new \models\Action();
 
