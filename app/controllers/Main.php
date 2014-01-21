@@ -19,15 +19,6 @@ class Main
 		echo \View::instance()->render('main/index.php');
 	}
 
-	public function mark_completed($f3) {
-		$itemId = $f3->get('POST.itemId');
-
-		$actionModel = new \models\Action();
-		$actionModel->markItemCompleted($itemId);
-
-		die;
-	}
-
 	public function create_parent($f3) {
 		$actionModel = new \models\Action();
 

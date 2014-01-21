@@ -98,4 +98,13 @@ class Items
 			echo \View::instance()->render('items/edit_project.php');
 	}
 
+	public function mark_completed($f3) {
+		$itemId = $f3->get('POST.itemId');
+
+		$actionModel = new \models\Action();
+		$actionModel->markItemCompleted($itemId);
+
+		die;
+	}
+
 }
