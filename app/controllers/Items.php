@@ -9,7 +9,7 @@ class Items
 
 		\F3::set('categories', $actionModel->getCategories());
 
-		echo \View::instance()->render('main/create_parent.php');
+		echo \View::instance()->render('items/create_parent.php');
 	}
 
 	public function create_inbox_item($f3) {

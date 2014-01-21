@@ -67,18 +67,18 @@ class Main
 		
 		switch($f3->get('POST.decision')) {
 			case 'reference':
-				echo \View::instance()->render('main/edit_reference.php');
+				echo \View::instance()->render('items/edit_reference.php');
 				break;
 			case 'list':
 				$f3->set('listType', 'L');
-				echo \View::instance()->render('main/edit_list.php');
+				echo \View::instance()->render('items/edit_list.php');
 				break;
 			case 'checklist':
 				$f3->set('listType', 'C');
-				echo \View::instance()->render('main/edit_list.php');
+				echo \View::instance()->render('items/edit_list.php');
 				break;
 			case 'listItem':
-				echo \View::instance()->render('main/edit_list_item.php');
+				echo \View::instance()->render('items/edit_list_item.php');
 				break;
 			case 'action':
 				$f3->set('spaceContexts', $actionModel->getSpaceContexts());
