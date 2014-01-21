@@ -16,6 +16,9 @@
 		<li>
 			<h3><?php echo Base::instance()->get('lang.GetInZero') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.GetInZeroDetails') ?></p></p>
+			<ul>
+				<li><?php echo $inboxItems ?> Inbox item(s) need processing</li>
+			</ul>
 		</li>
 		<li>
 			<h3><?php echo Base::instance()->get('lang.EmptyHead') ?></p></h3>
@@ -45,6 +48,10 @@
 		<li>
 			<h3><?php echo Base::instance()->get('lang.ReviewProjects') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewProjectsDetails') ?></p></p>
+			<ul>
+				<li>3 Project(s) are missing outcomes</li>
+				<li>5 Project(s) have no Next Action defined</li>
+			</ul>
 		</li>
 		<li>
 			<h3><?php echo Base::instance()->get('lang.ReviewChecklists') ?></p></h3>
