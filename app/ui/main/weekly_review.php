@@ -17,7 +17,7 @@
 			<h3><?php echo Base::instance()->get('lang.GetInZero') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.GetInZeroDetails') ?></p></p>
 			<ul>
-				<li><?php echo $inboxItems ?> Inbox item(s) need processing</li>
+				<li><?php echo $inboxItems ?> Inbox Item(s) need processing</li>
 			</ul>
 		</li>
 		<li>
@@ -32,6 +32,9 @@
 		<li>
 			<h3><?php echo Base::instance()->get('lang.ReviewActions') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewActionsDetails') ?></p></p>
+			<ul>
+				<li>3 Actions(s) are past due date</li>
+			</ul>
 		</li>
 		<li>
 			<h3><?php echo Base::instance()->get('lang.ReviewPrevCalendar') ?></p></h3>
@@ -44,6 +47,9 @@
 		<li>
 			<h3><?php echo Base::instance()->get('lang.ReviewWaitingFors') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewWaitingForsDetails') ?></p></p>
+			<ul>
+				<li>3 Waiting For(s) are past due date</li>
+			</ul>
 		</li>
 		<li>
 			<h3><?php echo Base::instance()->get('lang.ReviewProjects') ?></p></h3>
