@@ -262,7 +262,7 @@ class Items
 					'parentIds' => $f3->get('POST.parentIds'),
 					'categoryId' => $f3->get('POST.newProjectCategoryId'),
 					'deadline' => $f3->get('POST.newProjectDeadline'),
-					'isSomeday' => nul !== $f3->get('POST.isProjectSomeday') ? $f3->get('POST.isProjectSomeday') : null
+					'isSomeday' => null !== $f3->get('POST.isProjectSomeday') ? $f3->get('POST.isProjectSomeday') : null
 				));
 			$parentIds[] = $projectId;
 		} else {
