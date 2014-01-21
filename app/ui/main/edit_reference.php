@@ -4,7 +4,7 @@
 
 <div class="col">
 
-<form method="post" action="main/save_reference" class="edition-form">
+<form method="post" action="items/save_reference" class="edition-form">
 <fieldset class="columns2">
 
 <h1><?php echo Base::instance()->get('lang.EditReferenceTitle') ?></h1>
