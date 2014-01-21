@@ -1,12 +1,14 @@
 
 <?php echo \View::instance()->render('header.php') ?>
 
-<div id="main" class="columns-1" role="main">
+<div id="main" class="columns-1 content" role="main">
+<div class="col">
+
 	<h1><?php echo Base::instance()->get('lang.WeeklyReviewTitle') ?></h2>
 
 	<h2><?php echo Base::instance()->get('lang.GetClearSubtitle') ?></h2>
 
-	<ol start="1">
+	<ol class="weekly-review">
 		<li>
 			<h3><?php echo Base::instance()->get('lang.CollectLoosePapers') ?></h3>
 			<p><?php echo Base::instance()->get('lang.CollectLoosePapersDetails') ?></p>
@@ -23,7 +25,7 @@
 
 	<h2><?php echo Base::instance()->get('lang.GetCurrentSubtitle') ?></h2>
 
-	<ol start="4">
+	<ol class="weekly-review">
 		<li>
 			<h3><?php echo Base::instance()->get('lang.ReviewActions') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewActionsDetails') ?></p></p>
@@ -52,7 +54,7 @@
 
 	<h2><?php echo Base::instance()->get('lang.GetCreativeSubtitle') ?></h2>
 
-	<ol start="4">
+	<ol class="weekly-review">
 		<li>
 			<h3><?php echo Base::instance()->get('lang.ReviewSomeday') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewSomedayDetails') ?></p></p>
@@ -62,6 +64,8 @@
 			<p><?php echo Base::instance()->get('lang.BeCreativeDetails') ?></p></p>
 		</li>
 	</ol>
+
+</div>
 </div>
 
 <?php echo \View::instance()->render('footer.php') ?>

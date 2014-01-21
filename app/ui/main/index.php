@@ -1,7 +1,7 @@
 
 <?php echo \View::instance()->render('header.php') ?>
 
-<div id="main" class="columns-2" role="main">
+<div id="main" class="columns-2 forms" role="main">
 
   <div id="next-actions" class="col">
     <h2><?php echo Base::instance()->get('lang.NextActionsTitle') ?></h2>
