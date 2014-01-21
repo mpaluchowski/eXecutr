@@ -116,4 +116,12 @@ class Main
 		echo $view->renderJson($parents);
 	}
 
+	public function weekly_review($f3) {
+		$actionModel = new \models\Action();
+
+		$f3->set('inboxItems',  $actionModel->getInboxItemCount());
+
+		echo \View::instance()->render('main/weekly_review.php');
+	}
+
 }

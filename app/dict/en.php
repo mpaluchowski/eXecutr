@@ -4,7 +4,41 @@ return ['lang' => array(
 
 	'NextActionsTitle' => 'Next Actions',
 	'WaitingForsTitle' => 'Waiting Fors',
+
+	// Weekly Review
+
+	'WeeklyReviewTitle' => 'Weekly Review',
+
+	'GetClearSubtitle' => 'Get Clear',
+	'CollectLoosePapers' => 'Collect loose papers and materials',
+	'CollectLoosePapersDetails' => 'Gather all accumulater business cards, receipts, and miscellaneous paper-based materials into your in-basket.',
+	'GetInZero' => 'Get "IN" to zero',
+	'GetInZeroDetails' => 'Process completely all outstanding paper materials, journal and meeting notes, voicemail, dictation, and e-mails.',
+	'EmptyHead' => 'Empty your head',
+	'EmptyHeadDetails' => 'Put in writing any process and uncaptured new projects, action items, waiting-for\'s, someday-maybe\'s, etc.',
 	
+	'GetCurrentSubtitle' => 'Get Current',
+	'ReviewActions' => 'Review Action Lists',
+	'ReviewActionsDetails' => 'Mark off completed actions. Review for reminders of further action steps to record.',
+	'ReviewPrevCalendar' => 'Review Previous Calendar Data',
+	'ReviewPrevCalendarDetails' => 'Review past calendar in detail for remaining action items, reference data, etc. and transfer into the active system.',
+	'ReviewUpcomingCalendar' => 'Review Upcoming Calendar',
+	'ReviewUpcomingCalendarDetails' => 'Review upcoming calendar events - long and short term. Capture actions triggered.',
+	'ReviewWaitingFors' => 'Review Waiting-For List',
+	'ReviewWaitingForsDetails' => 'Record appropriate actions for any needed follow-up. Check off received ones.',
+	'ReviewProjects' => 'Review Project (and Larger Outcome) Lists',
+	'ReviewProjectsDetails' => 'Evaluate status of projects, goals and outcomes, one by one, ensuring at least one current action item on each. Browse through work-in-progress support material to trigger new actions, completions, waiting-for\'s, etc.',
+	'ReviewChecklists' => 'Review Any Relevant Checklists',
+	'ReviewChecklistsDetails' => 'Use as a trigger for any new actions.',
+
+	'GetCreativeSubtitle' => 'Get Creative',
+	'ReviewSomeday' => 'Review Someday/Maybe List',
+	'ReviewSomedayDetails' => 'Review for any projects which may now have become active, and transfer to "Projects." Delete items no longer of interest.',
+	'BeCreative' => 'Be Creative & Courageous',
+	'BeCreativeDetails' => 'Any new, wonderful, hare-brained, creative, thought-provoking, risk-taking ideas to add into your system???',
+	
+	// Item Fields
+
 	'ItemTitleLabel' => 'Title',
 	'ItemDescriptionLabel' => 'Description',
 	'ItemCategoryLabel' => 'Category',
