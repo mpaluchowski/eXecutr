@@ -411,14 +411,14 @@ ul.autocomplete-added, ul.inline-added {
 }
 
 #main, #floater {
-	h1, h2, h3 {
+	h2, h3 {
 		font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif;
 	}
 
 	h1 {
-		font-size: 1.4em;
-		font-weight: bold;
-		padding: 0 .5em .5em .2em;
+		color: #3f3f3f;
+		font-size: 2em;
+		margin-bottom: 1em;
 	}
 }
 
@@ -571,6 +571,7 @@ ol.weekly-review {
 
 		p {
 			font-size: 1.3em;
+			line-height: 130%;
 		}
 	}
 }
