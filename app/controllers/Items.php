@@ -4,6 +4,14 @@ namespace controllers;
 
 class Items
 {
+	public function create_parent($f3) {
+		$actionModel = new \models\Action();
+
+		\F3::set('categories', $actionModel->getCategories());
+
+		echo \View::instance()->render('main/create_parent.php');
+	}
+
 	public function create_inbox_item($f3) {
 		echo \View::instance()->render('items/create_inbox_item.php');
 	}

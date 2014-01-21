@@ -31,7 +31,7 @@ if (isset($parentItems))
 <?php endforeach; ?>
 <?php endif; ?>
             </ul>
-            <input type="text" id="parent-name" name="parentName" class="select" data-url="main/create_parent" data-autocomplete="main/find_parents">
+            <input type="text" id="parent-name" name="parentName" class="select" data-url="items/create_parent" data-autocomplete="main/find_parents">
         </td>
     </tr>
 </tbody>

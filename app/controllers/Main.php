@@ -19,14 +19,6 @@ class Main
 		echo \View::instance()->render('main/index.php');
 	}
 
-	public function create_parent($f3) {
-		$actionModel = new \models\Action();
-
-		\F3::set('categories', $actionModel->getCategories());
-
-		echo \View::instance()->render('main/create_parent.php');
-	}
-
 	public function get_inbox_item_count($f3) {
 		$actionModel = new \models\Action();
 		echo $actionModel->getInboxItemCount();
