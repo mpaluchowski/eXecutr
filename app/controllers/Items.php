@@ -336,6 +336,27 @@ class Items
 			$f3->reroute('/main/index');
 	}
 
+	public function save_list_item($f3) {
+		$actionModel = new \models\Action();
+
+		/* Update item with the new data */
+		$actionModel->updateItem(
+				$f3->get('POST.itemId'),
+				array(
+					'type' => 'T',
+					'title' => $f3->get('POST.title'),
+					'description' => $f3->get('POST.description'),
+					'parentIds' => $f3->get('POST.parentIds')
+				)
+			);
+
+		/* Move on to next requested action, or to main page */
+		if ($f3->get('POST.nextAction'))
+			$f3->reroute($f3->get('POST.nextAction'));
+		else if (!$f3->get('AJAX'))
+			$f3->reroute('/main/index');
+	}
+
 	public function mark_completed($f3) {
 		$itemId = $f3->get('POST.itemId');
 
