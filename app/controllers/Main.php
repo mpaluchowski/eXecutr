@@ -124,54 +124,6 @@ class Main
 		echo $view->renderJson($parents);
 	}
 
-	public function save_list($f3) {
-		$actionModel = new \models\Action();
-
-		if ($f3->get('POST.createParent')) {
-			/* Parent creation requested */
-			$projectId = $actionModel->createItem(array(
-					'type' => 'p',
-					'title' => $f3->get('POST.newProjectTitle'),
-					'description' => $f3->get('POST.newProjectDescription'),
-					'outcome' => $f3->get('POST.newProjectOutcome'),
-					'parentIds' => $f3->get('POST.parentIds'),
-					'categoryId' => $f3->get('POST.newProjectCategoryId'),
-					'deadline' => $f3->get('POST.newProjectDeadline'),
-					'isSomeday' => null !== $f3->get('POST.isProjectSomeday') ? $f3->get('POST.isProjectSomeday') : null
-				));
-			$parentIds[] = $projectId;
-		} else {
-			/* Not creating a new parent, use the ones provided */
-			$parentIds = null !== $f3->get('POST.parentIds') ? $f3->get('POST.parentIds') : array();
-		}
-
-		/* Update item with the new data */
-		$actionModel->updateItem(
-				$f3->get('POST.itemId'),
-				array(
-					'type' => $f3->get('POST.listType'),
-					'title' => $f3->get('POST.title'),
-					'description' => $f3->get('POST.description'),
-					'parentIds' => $parentIds
-				)
-			);
-
-		/* Create children */
-		foreach ($f3->get('POST.listItems') as $listItem) {
-			$actionModel->createItem(array(
-					'type' => 'T',
-					'title' => $listItem,
-					'parentIds' => array($f3->get('POST.itemId'))
-				));
-		}
-
-		/* Move on to next requested action, or to main page */
-		if ($f3->get('POST.nextAction'))
-			$f3->reroute($f3->get('POST.nextAction'));
-		else if (!$f3->get('AJAX'))
-			$f3->reroute('/main/index');
-	}
-
 	public function save_list_item($f3) {
 		$actionModel = new \models\Action();
 

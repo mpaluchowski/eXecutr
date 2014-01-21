@@ -4,7 +4,7 @@
 
 <div class="col">
 
-<form method="post" action="main/save_list" class="edition-form">
+<form method="post" action="items/save_list" class="edition-form">
 <fieldset class="columns-2">
 
     <h1><?php echo Base::instance()->get('lang.Edit' . Base::instance()->get('lang.ItemType-' . $listType) .  'Title') ?></h1>
