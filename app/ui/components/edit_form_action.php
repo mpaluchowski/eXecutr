@@ -4,7 +4,7 @@ if (isset($parentItems))
     $mainParentItem = $parentItems[0];
 ?>
 
-<form method="post" action="main/save_action" class="edition-form">
+<form method="post" action="items/save_action" class="edition-form">
 <fieldset class="columns2">
 
 <h1><?php echo Base::instance()->get('lang.EditActionTitle') ?></h1>
