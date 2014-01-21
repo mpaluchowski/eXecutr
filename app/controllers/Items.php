@@ -205,6 +205,50 @@ class Items
 			echo \View::instance()->render('items/edit_project.php');
 	}
 
+	public function save_project($f3) {
+		$actionModel = new \models\Action();
+		$parentIds = null !== $f3->get('POST.parentIds') ? $f3->get('POST.parentIds') : array();
+
+		$recurrence = \helpers\RecurrenceTool::extractRecursionString($f3->get('POST'));
+
+		/* Update item with the new data */
+		$projectProps = [
+				'type' => 'p',
+				'title' => $f3->get('POST.title'),
+				'description' => $f3->get('POST.description'),
+				'parentIds' => $parentIds,
+				'outcome' => $f3->get('POST.outcome'),
+				'isSomeday' => null !== $f3->get('POST.isSomeday') ? $f3->get('POST.isSomeday') : null,
+				'tickleDate' => $f3->get('POST.tickleDate'),
+				'deadline' => $f3->get('POST.deadline'),
+				'recur' => $recurrence['recur'],
+				'recurDesc' => $recurrence['recurDesc'],
+				'categoryId' => $f3->get('POST.categoryId')
+			];
+		if (!$f3->get('POST.itemId'))
+			$newItemId = $actionModel->createItem($projectProps);
+		else
+			$actionModel->updateItem($f3->get('POST.itemId'), $projectProps);
+
+		if ($f3->get('POST.nextAction')) {
+			
+			$query['parentId'] = $f3->get('POST.itemId') ? $f3->get('POST.itemId') : $newItemId;
+			if ($f3->get('POST.flow')) {
+				$query['flow'] = $f3->get('POST.flow');
+				$query['flowStep'] = $f3->get('POST.flowStep');
+			}
+
+			$f3->reroute(
+					$f3->get('POST.nextAction')
+					. '?'
+					. http_build_query($query)
+				);
+
+		} else if (!$f3->get('AJAX')) {
+			$f3->reroute('/main/index');
+		}
+	}
+
 	public function mark_completed($f3) {
 		$itemId = $f3->get('POST.itemId');
 
