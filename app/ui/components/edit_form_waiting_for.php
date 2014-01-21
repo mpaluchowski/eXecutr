@@ -4,7 +4,7 @@ if (isset($parentItems))
     $mainParentItem = $parentItems[0];
 ?>
 
-<form method="post" action="main/save_waiting_for" class="edition-form">
+<form method="post" action="items/save_waiting_for" class="edition-form">
 <fieldset class="columns2">
 
 <h1><?php echo Base::instance()->get('lang.EditWaitingForTitle') ?></h1>
