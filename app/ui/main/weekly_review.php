@@ -48,7 +48,7 @@
 			<h3><?php echo Base::instance()->get('lang.ReviewWaitingFors') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewWaitingForsDetails') ?></p></p>
 			<ul>
-				<li>3 Waiting For(s) are past due date</li>
+				<li><?php echo $waitingForsPastDueCount ?> Waiting For(s) are past due date</li>
 			</ul>
 		</li>
 		<li>
