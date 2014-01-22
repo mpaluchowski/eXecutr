@@ -17,7 +17,7 @@
 			<h3><?php echo Base::instance()->get('lang.GetInZero') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.GetInZeroDetails') ?></p></p>
 			<ul>
-				<li><?php echo $inboxItems ?> Inbox Item(s) need processing</li>
+				<li><span><?php echo Base::instance()->get('lang.InboxItemsNumber', $inboxItems) ?></span></li>
 			</ul>
 		</li>
 		<li>
@@ -34,7 +34,7 @@
 			<p><?php echo Base::instance()->get('lang.ReviewActionsDetails') ?></p></p>
 			<ul>
 				<li>
-					<span><?php echo count($actionsPastDue) ?> Actions(s) are past due date</span>
+					<span><?php echo Base::instance()->get('lang.ActionsPastDueNumber', count($actionsPastDue)) ?> </span>
 					<ul>
 <?php foreach ($actionsPastDue as $action): ?>
 						<li><?php echo $action->title ?> (<?php echo \helpers\HumaneDateView::getHumanReadable($action->deadline) ?>)</li>
@@ -56,7 +56,7 @@
 			<p><?php echo Base::instance()->get('lang.ReviewWaitingForsDetails') ?></p></p>
 			<ul>
 				<li>
-					<span><?php echo count($waitingForsPastDue) ?> Waiting For(s) are past due date</span>
+					<span><?php echo Base::instance()->get('lang.WaitingForsPastDueNumber', count($waitingForsPastDue)) ?></span>
 					<ul>
 <?php foreach ($waitingForsPastDue as $waitingFor): ?>
 						<li><?php echo $waitingFor->title ?> (<?php echo \helpers\HumaneDateView::getHumanReadable($waitingFor->deadline) ?>)</li>
@@ -70,7 +70,7 @@
 			<p><?php echo Base::instance()->get('lang.ReviewProjectsDetails') ?></p></p>
 			<ul>
 				<li>
-					<span><?php echo count($projectsWithoutOutcomes) ?> Project(s) are missing outcomes</span>
+					<span><?php echo Base::instance()->get('lang.ProjectsNoOutcomesNumber', count($projectsWithoutOutcomes)) ?> </span>
 					<ul>
 <?php foreach ($projectsWithoutOutcomes as $project): ?>
 						<li><?php echo $project->title ?></li>
@@ -78,7 +78,7 @@
 					</ul>
 				</li>
 				<li>
-					<span><?php echo count($projectsMissingNextActions) ?> Project(s) have no Next Action defined</span>
+					<span><?php echo Base::instance()->get('lang.ProjectsNoNextActionsNumber', count($projectsMissingNextActions)) ?> </span>
 					<ul>
 <?php foreach ($projectsMissingNextActions as $project): ?>
 						<li><?php echo $project->title ?></li>

@@ -36,6 +36,12 @@ return ['lang' => array(
 	'ReviewSomedayDetails' => 'Review for any projects which may now have become active, and transfer to "Projects." Delete items no longer of interest.',
 	'BeCreative' => 'Be Creative & Courageous',
 	'BeCreativeDetails' => 'Any new, wonderful, hare-brained, creative, thought-provoking, risk-taking ideas to add into your system???',
+
+	'InboxItemsNumber' => '{0,number} Inbox Item(s) need processing',
+	'ActionsPastDueNumber' => '{0,number} Actions(s) are past due date',
+	'WaitingForsPastDueNumber' => '{0,number} Waiting For(s) are past due date',
+	'ProjectsNoOutcomesNumber' => '{0,number} Project(s) are missing outcomes',
+	'ProjectsNoNextActionsNumber' => '{0,number} Project(s) have no Next Action defined',
 	
 	// Item Fields
 
