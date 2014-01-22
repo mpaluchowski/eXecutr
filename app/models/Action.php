@@ -659,4 +659,18 @@ class Action {
 		return \F3::get('db')->exec($sql)[0]['count'];
     }
 
+    public function getProjectsWithoutOutcomesCount() {
+    	$sql = 'SELECT COUNT(DISTINCT it.itemId) AS count
+				FROM ' . \F3::get('db_table_prefix') . 'items it
+				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
+				  ON it.itemId = its.itemId
+				WHERE its.type = "p"
+				  AND (it.desiredOutcome = "" OR it.desiredOutcome IS NULL)
+				  AND its.isSomeday = "n"
+				  AND its.dateCompleted IS NULL
+				  AND (its.tickleDate IS NULL OR its.tickleDate <= CURDATE())
+				';
+		return \F3::get('db')->exec($sql)[0]['count'];
+    }
+
 }

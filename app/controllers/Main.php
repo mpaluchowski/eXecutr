@@ -122,7 +122,8 @@ class Main
 		$f3->mset([
 			'inboxItems' => $actionModel->getInboxItemCount(),
 			'actionsPastDueCount' => $actionModel->getItemsPastDueCount('a'),
-			'waitingForsPastDueCount' => $actionModel->getItemsPastDueCount('w')
+			'waitingForsPastDueCount' => $actionModel->getItemsPastDueCount('w'),
+			'projectsWithoutOutcomesCount' => $actionModel->getProjectsWithoutOutcomesCount()
 			]);
 
 		echo \View::instance()->render('main/weekly_review.php');
