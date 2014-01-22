@@ -124,7 +124,7 @@ class Main
 			'actionsPastDue' => $actionModel->getItemsPastDue('a'),
 			'waitingForsPastDue' => $actionModel->getItemsPastDue('w'),
 			'projectsWithoutOutcomes' => $actionModel->getProjectsWithoutOutcomes(),
-			'projectsMissingNextActions' => $actionModel->getProjectsMissingNextActionsCount()
+			'projectsMissingNextActions' => $actionModel->getProjectsMissingNextActions()
 			]);
 
 		echo \View::instance()->render('main/weekly_review.php');

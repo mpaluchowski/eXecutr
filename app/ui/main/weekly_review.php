@@ -77,7 +77,14 @@
 <?php endforeach; ?>
 					</ul>
 				</li>
-				<li><span><?php echo $projectsMissingNextActions ?> Project(s) have no Next Action defined</span></li>
+				<li>
+					<span><?php echo count($projectsMissingNextActions) ?> Project(s) have no Next Action defined</span>
+					<ul>
+<?php foreach ($projectsMissingNextActions as $project): ?>
+						<li><?php echo $project->title ?></li>
+<?php endforeach; ?>
+					</ul>
+				</li>
 			</ul>
 		</li>
 		<li>

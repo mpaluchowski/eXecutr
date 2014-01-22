@@ -702,8 +702,9 @@ class Action {
 		return $projects;
     }
 
-    public function getProjectsMissingNextActionsCount() {
-    	$sql = 'SELECT COUNT(DISTINCT it.itemId) AS count
+    public function getProjectsMissingNextActions() {
+    	$sql = 'SELECT it.itemId,
+    				   it.title
 				FROM ' . \F3::get('db_table_prefix') . 'items it
 				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
 				  ON it.itemId = its.itemId
@@ -726,8 +727,19 @@ class Action {
 					 AND its2.dateCompleted IS NULL
 					 AND its2.nextaction = "y"
 					)
+				ORDER BY it.title
 				';
-    	return \F3::get('db')->exec($sql)[0]['count'];
+    	$rows = \F3::get('db')->exec($sql);
+
+		$projects = [];
+		foreach ($rows as $row) {
+			$projects[] = (object)[
+				'id' => $row['itemId'],
+				'title' => $row['title']
+			];
+		}
+
+		return $projects;
     }
 
 }
