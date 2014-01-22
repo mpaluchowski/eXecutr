@@ -123,7 +123,8 @@ class Main
 			'inboxItems' => $actionModel->getInboxItemCount(),
 			'actionsPastDueCount' => $actionModel->getItemsPastDueCount('a'),
 			'waitingForsPastDueCount' => $actionModel->getItemsPastDueCount('w'),
-			'projectsWithoutOutcomesCount' => $actionModel->getProjectsWithoutOutcomesCount()
+			'projectsWithoutOutcomesCount' => $actionModel->getProjectsWithoutOutcomesCount(),
+			'projectsMissingNextActions' => $actionModel->getProjectsMissingNextActionsCount()
 			]);
 
 		echo \View::instance()->render('main/weekly_review.php');

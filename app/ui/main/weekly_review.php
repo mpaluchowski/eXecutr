@@ -56,7 +56,7 @@
 			<p><?php echo Base::instance()->get('lang.ReviewProjectsDetails') ?></p></p>
 			<ul>
 				<li><?php echo $projectsWithoutOutcomesCount ?> Project(s) are missing outcomes</li>
-				<li>5 Project(s) have no Next Action defined</li>
+				<li><?php echo $projectsMissingNextActions ?> Project(s) have no Next Action defined</li>
 			</ul>
 		</li>
 		<li>

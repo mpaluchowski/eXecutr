@@ -673,4 +673,32 @@ class Action {
 		return \F3::get('db')->exec($sql)[0]['count'];
     }
 
+    public function getProjectsMissingNextActionsCount() {
+    	$sql = 'SELECT COUNT(DISTINCT it.itemId) AS count
+				FROM ' . \F3::get('db_table_prefix') . 'items it
+				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
+				  ON it.itemId = its.itemId
+				 AND its.`type` = "p"
+				 AND its.isSomeday = "n"
+				 AND its.dateCompleted IS NULL
+				 AND (its.tickleDate IS NULL OR its.tickleDate <= CURDATE())
+				WHERE it.itemId NOT IN (
+					SELECT DISTINCT lo.parentId
+					FROM ' . \F3::get('db_table_prefix') . 'lookup lo
+					JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
+				  	  ON lo.parentId = its.itemId
+					 AND its.`type` = "p"
+					 AND its.isSomeday = "n"
+					 AND its.dateCompleted IS NULL
+				 	 AND (its.tickleDate IS NULL OR its.tickleDate <= CURDATE())
+					JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its2
+					  ON lo.itemId = its2.itemId
+					 AND its2.`type` in ("a", "w")
+					 AND its2.dateCompleted IS NULL
+					 AND its2.nextaction = "y"
+					)
+				';
+    	return \F3::get('db')->exec($sql)[0]['count'];
+    }
+
 }
