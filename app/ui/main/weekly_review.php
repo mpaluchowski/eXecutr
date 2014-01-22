@@ -69,7 +69,14 @@
 			<h3><?php echo Base::instance()->get('lang.ReviewProjects') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewProjectsDetails') ?></p></p>
 			<ul>
-				<li><span><?php echo $projectsWithoutOutcomesCount ?> Project(s) are missing outcomes</span></li>
+				<li>
+					<span><?php echo count($projectsWithoutOutcomes) ?> Project(s) are missing outcomes</span>
+					<ul>
+<?php foreach ($projectsWithoutOutcomes as $project): ?>
+						<li><?php echo $project->title ?></li>
+<?php endforeach; ?>
+					</ul>
+				</li>
 				<li><span><?php echo $projectsMissingNextActions ?> Project(s) have no Next Action defined</span></li>
 			</ul>
 		</li>

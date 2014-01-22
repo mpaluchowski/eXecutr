@@ -123,7 +123,7 @@ class Main
 			'inboxItems' => $actionModel->getInboxItemCount(),
 			'actionsPastDue' => $actionModel->getItemsPastDue('a'),
 			'waitingForsPastDue' => $actionModel->getItemsPastDue('w'),
-			'projectsWithoutOutcomesCount' => $actionModel->getProjectsWithoutOutcomesCount(),
+			'projectsWithoutOutcomes' => $actionModel->getProjectsWithoutOutcomes(),
 			'projectsMissingNextActions' => $actionModel->getProjectsMissingNextActionsCount()
 			]);
 

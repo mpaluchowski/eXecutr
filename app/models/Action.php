@@ -676,8 +676,9 @@ class Action {
 		return $items;
     }
 
-    public function getProjectsWithoutOutcomesCount() {
-    	$sql = 'SELECT COUNT(DISTINCT it.itemId) AS count
+    public function getProjectsWithoutOutcomes() {
+    	$sql = 'SELECT it.itemId,
+    				   it.title
 				FROM ' . \F3::get('db_table_prefix') . 'items it
 				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
 				  ON it.itemId = its.itemId
@@ -686,8 +687,19 @@ class Action {
 				  AND its.isSomeday = "n"
 				  AND its.dateCompleted IS NULL
 				  AND (its.tickleDate IS NULL OR its.tickleDate <= CURDATE())
+				ORDER BY it.title
 				';
-		return \F3::get('db')->exec($sql)[0]['count'];
+		$rows = \F3::get('db')->exec($sql);
+
+		$projects = [];
+		foreach ($rows as $row) {
+			$projects[] = (object)[
+				'id' => $row['itemId'],
+				'title' => $row['title']
+			];
+		}
+
+		return $projects;
     }
 
     public function getProjectsMissingNextActionsCount() {
