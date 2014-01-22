@@ -33,7 +33,7 @@
 			<h3><?php echo Base::instance()->get('lang.ReviewActions') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewActionsDetails') ?></p></p>
 			<ul>
-				<li>3 Actions(s) are past due date</li>
+				<li><?php echo $actionsPastDueCount ?> Actions(s) are past due date</li>
 			</ul>
 		</li>
 		<li>

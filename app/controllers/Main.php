@@ -119,7 +119,10 @@ class Main
 	public function weekly_review($f3) {
 		$actionModel = new \models\Action();
 
-		$f3->set('inboxItems',  $actionModel->getInboxItemCount());
+		$f3->mset([
+			'inboxItems' => $actionModel->getInboxItemCount(),
+			'actionsPastDueCount' => $actionModel->getItemsPastDueCount('a')
+			]);
 
 		echo \View::instance()->render('main/weekly_review.php');
 	}

@@ -639,5 +639,24 @@ class Action {
         \F3::get('db')->commit();
     }
 
+    public function getItemsPastDueCount($itemType) {
+		$sql = 'SELECT COUNT(DISTINCT its.itemId) AS count
+				  FROM ' . \F3::get('db_table_prefix') . 'itemstatus its
+				LEFT JOIN ' . \F3::get('db_table_prefix') . 'lookup lo
+					   ON its.itemId = lo.itemId
+				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its2
+				  ON its2.itemId = lo.parentId
+				WHERE its.type = ' . \F3::get('db')->quote($itemType) . '
+				  AND its.deadline < CURDATE()
+				  AND its.dateCompleted IS NULL
+				  AND its2.dateCompleted IS NULL
+				  AND its.isSomeday = "n"
+				  AND its2.isSomeday = "n"
+				  AND its.nextAction = "y"
+				  AND (its.tickleDate IS NULL OR its.tickleDate <= CURDATE())
+				  AND (its2.tickleDate IS NULL OR its2.tickleDate <= CURDATE())
+				';
+		return \F3::get('db')->exec($sql)[0]['count'];
+    }
 
 }
