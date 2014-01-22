@@ -121,8 +121,8 @@ class Main
 
 		$f3->mset([
 			'inboxItems' => $actionModel->getInboxItemCount(),
-			'actionsPastDueCount' => $actionModel->getItemsPastDueCount('a'),
-			'waitingForsPastDueCount' => $actionModel->getItemsPastDueCount('w'),
+			'actionsPastDue' => $actionModel->getItemsPastDue('a'),
+			'waitingForsPastDue' => $actionModel->getItemsPastDue('w'),
 			'projectsWithoutOutcomesCount' => $actionModel->getProjectsWithoutOutcomesCount(),
 			'projectsMissingNextActions' => $actionModel->getProjectsMissingNextActionsCount()
 			]);

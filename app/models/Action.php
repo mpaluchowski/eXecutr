@@ -639,24 +639,41 @@ class Action {
         \F3::get('db')->commit();
     }
 
-    public function getItemsPastDueCount($itemType) {
-		$sql = 'SELECT COUNT(DISTINCT its.itemId) AS count
-				  FROM ' . \F3::get('db_table_prefix') . 'itemstatus its
+    public function getItemsPastDue($itemType) {
+		$sql = 'SELECT it.itemId,
+					   it.title,
+					   its.deadline
+				FROM ' . \F3::get('db_table_prefix') . 'items it
+				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
+				  ON it.itemId = its.itemId
+				 AND its.type = ' . \F3::get('db')->quote($itemType) . '
+				 AND its.deadline < CURDATE()
+				 AND its.dateCompleted IS NULL
+				 AND its.isSomeday = "n"
+				 AND its.nextAction = "y"
+				 AND (its.tickleDate IS NULL OR its.tickleDate <= CURDATE())
 				LEFT JOIN ' . \F3::get('db_table_prefix') . 'lookup lo
 					   ON its.itemId = lo.itemId
 				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its2
 				  ON its2.itemId = lo.parentId
-				WHERE its.type = ' . \F3::get('db')->quote($itemType) . '
-				  AND its.deadline < CURDATE()
-				  AND its.dateCompleted IS NULL
-				  AND its2.dateCompleted IS NULL
-				  AND its.isSomeday = "n"
-				  AND its2.isSomeday = "n"
-				  AND its.nextAction = "y"
-				  AND (its.tickleDate IS NULL OR its.tickleDate <= CURDATE())
-				  AND (its2.tickleDate IS NULL OR its2.tickleDate <= CURDATE())
+				 AND its2.dateCompleted IS NULL
+				 AND its2.isSomeday = "n"
+				 AND (its2.tickleDate IS NULL OR its2.tickleDate <= CURDATE())
+				GROUP BY it.itemId
+				ORDER BY its.deadline
 				';
-		return \F3::get('db')->exec($sql)[0]['count'];
+		$rows = \F3::get('db')->exec($sql);
+
+		$items = [];
+		foreach ($rows as $row) {
+			$items[] = (object)[
+				'id' => $row['itemId'],
+				'title' => $row['title'],
+				'deadline' => $row['deadline']
+			];
+		}
+
+		return $items;
     }
 
     public function getProjectsWithoutOutcomesCount() {

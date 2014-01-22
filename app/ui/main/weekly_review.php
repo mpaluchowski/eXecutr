@@ -33,7 +33,14 @@
 			<h3><?php echo Base::instance()->get('lang.ReviewActions') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewActionsDetails') ?></p></p>
 			<ul>
-				<li><?php echo $actionsPastDueCount ?> Actions(s) are past due date</li>
+				<li>
+					<span><?php echo count($actionsPastDue) ?> Actions(s) are past due date</span>
+					<ul>
+<?php foreach ($actionsPastDue as $action): ?>
+						<li><?php echo $action->title ?> (<?php echo \helpers\HumaneDateView::getHumanReadable($action->deadline) ?>)</li>
+<?php endforeach; ?>
+					</ul>
+				</li>
 			</ul>
 		</li>
 		<li>
@@ -48,15 +55,22 @@
 			<h3><?php echo Base::instance()->get('lang.ReviewWaitingFors') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewWaitingForsDetails') ?></p></p>
 			<ul>
-				<li><?php echo $waitingForsPastDueCount ?> Waiting For(s) are past due date</li>
+				<li>
+					<span><?php echo count($waitingForsPastDue) ?> Waiting For(s) are past due date</span>
+					<ul>
+<?php foreach ($waitingForsPastDue as $waitingFor): ?>
+						<li><?php echo $waitingFor->title ?> (<?php echo \helpers\HumaneDateView::getHumanReadable($waitingFor->deadline) ?>)</li>
+<?php endforeach; ?>
+					</ul>
+				</li>
 			</ul>
 		</li>
 		<li>
 			<h3><?php echo Base::instance()->get('lang.ReviewProjects') ?></p></h3>
 			<p><?php echo Base::instance()->get('lang.ReviewProjectsDetails') ?></p></p>
 			<ul>
-				<li><?php echo $projectsWithoutOutcomesCount ?> Project(s) are missing outcomes</li>
-				<li><?php echo $projectsMissingNextActions ?> Project(s) have no Next Action defined</li>
+				<li><span><?php echo $projectsWithoutOutcomesCount ?> Project(s) are missing outcomes</span></li>
+				<li><span><?php echo $projectsMissingNextActions ?> Project(s) have no Next Action defined</span></li>
 			</ul>
 		</li>
 		<li>

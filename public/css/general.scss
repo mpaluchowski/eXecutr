@@ -578,7 +578,16 @@ ol.weekly-review {
 	ul {
 		margin-top: .6em;
 
-		li {
+		ul {
+			list-style: square;
+		}
+
+		li li {
+			font-size: 1.2em;
+			margin: .5em 0 .5em 26px;
+		}
+		
+		span {
 			display: inline-block;
 			background: #f5f5f5;
 			border-radius: 5px;
