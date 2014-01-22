@@ -31,8 +31,13 @@
 <header id="top-header">
 
   <div id="header-mainmenu">
-    <div id="inbox-notification">
-      <?php echo \View::instance()->render('components/inbox_notification.php') ?>
+    <div id="inbox-config-menu">
+      <a href="main/weekly_review">[<?php echo Base::instance()->get('lang.WeeklyReviewMenuItem') ?>]</a>
+      <a id="inbox-notification" href="main/process_inbox" title="<?php echo Base::instance()->get('lang.InboxNotificationTitle') ?>"><?php
+        echo Base::instance()->get('lang.InboxNotificationLabel');
+      ?>
+        <span id="inbox-count"><?php echo $inboxItems ?></span>
+      </a>
     </div>
 
     <a id="logo" href=".">eXecutr</a>

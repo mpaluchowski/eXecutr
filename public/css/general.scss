@@ -96,10 +96,9 @@ a#logo {
 	padding: .2em .6em;
 }
 
-div#inbox-notification {
+#inbox-config-menu {
 	float: right;
 	font-size: 1.2em;
-	font-weight: bold;
 	padding: .4em .6em;
 
 	a {
@@ -107,6 +106,11 @@ div#inbox-notification {
 			background: #FFE87F;
 		}
 	}
+}
+
+#inbox-notification {
+	font-weight: bold;
+	margin-left: 30px;
 }
 
 span#inbox-count {

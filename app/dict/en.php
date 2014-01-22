@@ -102,6 +102,7 @@ return ['lang' => array(
 	'AddActionMenuItem' => '<span class="key-short">a</span>ction',
 	'AddProjectMenuItem' => '<span class="key-short">p</span>roject',
 	'AddWaitingForMenuItem' => '<span class="key-short">w</span>aiting for',
+	'WeeklyReviewMenuItem' => 'weekly review',
 	'ProcessInboxTitle' => 'Process Inbox',
 	'EditReferenceTitle' => 'Edit Reference',
 	'EditListTitle' => 'Edit List',
