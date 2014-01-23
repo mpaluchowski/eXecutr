@@ -7,6 +7,7 @@ eXecutr.Global = function() {
 		/* Apply datepicker */
 		$('input.datepicker').applyDatePicker();
 
+		initMenuFixing();
 		initItemCatching();
 		initForms();
 		initParentAutocomplete();
@@ -16,6 +17,24 @@ eXecutr.Global = function() {
 
 		hideRecurrenceBlock();
 
+	},
+
+	initMenuFixing = function() {
+		var header = $('#top-header');
+		var topLocation = header.position().top;
+		$(window).scroll(function() {
+			if (topLocation >= $(window).scrollTop()) {
+				if (header.hasClass('fixed')) {
+					header.removeClass('fixed');
+					$('#main').removeClass('fixed');
+				}
+			} else { 
+				if (!header.hasClass('fixed')) {
+					header.addClass('fixed');
+					$('#main').addClass('fixed');
+				}
+			}
+		});
 	},
 
 	initForms = function() {

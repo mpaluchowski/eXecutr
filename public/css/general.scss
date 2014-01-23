@@ -57,11 +57,14 @@ table {
 
 header#top-header {
 	background: #3f3f3f;
-	position: fixed;
-	width: 100%;
-	top: 0;
-	left: 0;
-	z-index: 60;
+
+	&.fixed {
+		position: fixed;
+		width: 100%;
+		top: 0;
+		left: 0;
+		z-index: 60;
+	}
 
 	a {
 		text-decoration: none;
@@ -380,7 +383,9 @@ ul.autocomplete-added, ul.inline-added {
 /* Main content area */
 
 #main {
-	margin-top: 50px;
+	&.fixed {
+		margin-top: 50px;
+	}
 
 	&.forms {
 		h2 {
@@ -422,7 +427,7 @@ ul.autocomplete-added, ul.inline-added {
 	h1 {
 		color: #3f3f3f;
 		font-size: 2em;
-		margin-bottom: 1em;
+		margin: .4em 0 1em;
 	}
 }
 
