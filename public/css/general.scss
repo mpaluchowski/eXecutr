@@ -460,8 +460,9 @@ table.report {
 a.table-cell-button {
 	color: #000;
 	display: block;
+	line-height: 140%;
+	padding: .2em 0;
 	text-decoration: none;
-	padding: .4em 0;
 
 	&:hover {
 		background: #CFCFCF;
