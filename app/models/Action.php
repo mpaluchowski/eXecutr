@@ -80,27 +80,30 @@ class Action {
                        it.recurdesc,
                        its.deadline,
 		               GROUP_CONCAT(DISTINCT it2.title ORDER BY it2.title SEPARATOR "; ") AS parentTitles
-				FROM ' . \F3::get('db_table_prefix') . 'itemstatus its
-				JOIN ' . \F3::get('db_table_prefix') . 'items it
+				FROM ' . \F3::get('db_table_prefix') . 'items it
+				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
 				  ON it.itemId = its.itemId
+				 AND its.type = "w"
+				 AND its.isSomeday = "n"
+				 AND its.dateCompleted IS NULL
+				 AND its.nextAction = "y"
+				 AND (its.tickleDate <= now()
+				       OR its.tickledate IS NULL)
 				LEFT JOIN ' . \F3::get('db_table_prefix') . 'lookup lo
 				 ON it.itemId = lo.itemId
-				JOIN ' . \F3::get('db_table_prefix') . 'items it2
+				LEFT JOIN ' . \F3::get('db_table_prefix') . 'items it2
 				 ON it2.itemId = lo.parentId
-				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its2
-				 ON its2.itemId = it2.itemId
-				WHERE its.type = "w"
-				  AND its.isSomeday = "n"
-				  AND its.dateCompleted IS NULL
-				  AND its.nextAction = "y"
-				  AND (its.tickleDate <= now()
-				       OR its.tickledate IS NULL)
-				  AND (its2.isSomeday IS NULL
-				       OR its2.isSomeday = "n")
-				  AND (its2.tickledate IS NULL
-				       OR its2.tickledate <= now())
-				  AND its2.dateCompleted IS NULL
-				GROUP BY it.itemId, it.title, it.description, its.deadline
+				WHERE lo.parentId IS NULL
+				   OR lo.parentId IN (
+						SELECT its2.itemId
+						FROM ' . \F3::get('db_table_prefix') . 'itemstatus its2
+						WHERE its2.isSomeday = "n"
+						  AND (its2.tickledate IS NULL
+						       OR its2.tickledate <= now())
+						  AND its2.dateCompleted IS NULL
+						  AND its2.type IN ("m", "v", "o", "g", "p")
+				   )
+				GROUP BY it.itemId, it.title, it.description, it.recurdesc, its.deadline
 				ORDER BY it.title';
 		$rs = \F3::get('db')->exec($sql);
 
