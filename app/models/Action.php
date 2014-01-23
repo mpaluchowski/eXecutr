@@ -25,12 +25,12 @@ class Action {
 					   NULL AS parentTitles,
 					   it.recurdesc,
 					   its.deadline
-				FROM gtdphp_items it
-				JOIN gtdphp_itemstatus its
+				FROM ' . \F3::get('db_table_prefix') . 'items it
+				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
 				  ON it.itemId = its.itemId
-				LEFT JOIN gtdphp_context co
+				LEFT JOIN ' . \F3::get('db_table_prefix') . 'context co
 				  ON co.contextId = its.contextId
-				LEFT JOIN gtdphp_timeitems ti
+				LEFT JOIN ' . \F3::get('db_table_prefix') . 'timeitems ti
 				  ON ti.timeframeId = its.timeframeId
 				WHERE its.type = "a"
 				  AND its.isSomeday = "n"
@@ -39,7 +39,7 @@ class Action {
 				  AND (its.tickleDate <= CURDATE()
 				   OR its.tickledate IS NULL)
 				  AND it.itemId NOT IN (
-				  	SELECT lo.itemId FROM gtdphp_lookup lo
+				  	SELECT lo.itemId FROM ' . \F3::get('db_table_prefix') . 'lookup lo
 				  )
 				)
 				UNION ALL
@@ -52,8 +52,8 @@ class Action {
 					   GROUP_CONCAT(DISTINCT it2.title ORDER BY it2.title SEPARATOR "; ") AS parentTitles,
 					   it.recurdesc,
 					   its.deadline
-				FROM gtdphp_items it
-				JOIN gtdphp_itemstatus its
+				FROM ' . \F3::get('db_table_prefix') . 'items it
+				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
 				  ON it.itemId = its.itemId
 				 AND its.type = "a"
 				 AND its.isSomeday = "n"
@@ -61,19 +61,19 @@ class Action {
 				 AND its.nextAction = "y"
 				 AND (its.tickleDate <= CURDATE()
 				  OR its.tickledate IS NULL)
-				JOIN gtdphp_lookup lo
+				JOIN ' . \F3::get('db_table_prefix') . 'lookup lo
 				  ON lo.itemId = it.itemId
-				JOIN gtdphp_items it2
+				JOIN ' . \F3::get('db_table_prefix') . 'items it2
 				  ON lo.parentId = it2.itemId
-				JOIN gtdphp_itemstatus its2
+				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its2
 				  ON its2.itemId = lo.parentId
 				 AND its2.isSomeday = "n"
 				 AND (its2.tickledate IS NULL
 				  OR its2.tickledate <= CURDATE())
 				 AND its2.dateCompleted IS NULL
-				LEFT JOIN gtdphp_context co
+				LEFT JOIN ' . \F3::get('db_table_prefix') . 'context co
 				  ON co.contextId = its.contextId
-				LEFT JOIN gtdphp_timeitems ti
+				LEFT JOIN ' . \F3::get('db_table_prefix') . 'timeitems ti
 				  ON ti.timeframeId = its.timeframeId
 				GROUP BY it.itemId, co.name, it.title, its.deadline, it.description, it.recurdesc, ti.timeframe
 				)
