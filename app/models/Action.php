@@ -134,7 +134,7 @@ class Action {
 				   )
 				GROUP BY it.itemId, it.title, it.description, it.recurdesc, its.deadline
 				ORDER BY it.title';
-		$rs = \F3::get('db')->exec($sql);
+		$rs = \F3::get('db')->query($sql);
 
         $waitingFors = array();
         foreach($rs as $row)
