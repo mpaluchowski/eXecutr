@@ -16,42 +16,71 @@ class Action {
 	}
 
 	public function getNextActionsByContext() {
-		$sql = 'SELECT it.itemId AS actionId,
+		$sql = '(
+				SELECT it.itemId AS actionId,
+					   it.title,
+					   it.description,
 					   co.name AS contextName,
 					   ti.timeframe,
-					   it.title,
-					   GROUP_CONCAT(DISTINCT it2.title ORDER BY it2.title SEPARATOR "; ") AS parentTitles,
-					   it.description,
+					   NULL AS parentTitles,
 					   it.recurdesc,
 					   its.deadline
-				FROM ' . \F3::get('db_table_prefix') . 'items it
-				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its
+				FROM gtdphp_items it
+				JOIN gtdphp_itemstatus its
 				  ON it.itemId = its.itemId
-				LEFT JOIN ' . \F3::get('db_table_prefix') . 'lookup lo
-				  ON its.itemId = lo.itemId
-				JOIN ' . \F3::get('db_table_prefix') . 'items it2
-				  ON it2.itemId = lo.parentId
-				JOIN ' . \F3::get('db_table_prefix') . 'itemstatus its2
-				  ON its2.itemId = it2.itemId
-				LEFT JOIN ' . \F3::get('db_table_prefix') . 'context co
-				  ON its.contextId = co.contextId
-				LEFT JOIN ' . \F3::get('db_table_prefix') . 'timeitems ti
-				  ON its.timeframeId = ti.timeframeId
+				LEFT JOIN gtdphp_context co
+				  ON co.contextId = its.contextId
+				LEFT JOIN gtdphp_timeitems ti
+				  ON ti.timeframeId = its.timeframeId
 				WHERE its.type = "a"
 				  AND its.isSomeday = "n"
 				  AND its.dateCompleted IS NULL
 				  AND its.nextAction = "y"
-				  AND (its.tickleDate <= now()
-				  	OR its.tickledate IS NULL)
-				  AND (its2.isSomeday IS NULL
-					OR its2.isSomeday = "n")
-				  AND (its2.tickledate IS NULL
-					OR its2.tickledate <= now())
-				  AND its2.dateCompleted IS NULL
+				  AND (its.tickleDate <= CURDATE()
+				   OR its.tickledate IS NULL)
+				  AND it.itemId NOT IN (
+				  	SELECT lo.itemId FROM gtdphp_lookup lo
+				  )
+				)
+				UNION ALL
+				(
+				SELECT it.itemId AS actionId,
+					   it.title,
+					   it.description,
+					   co.name AS contextName,
+					   ti.timeframe,
+					   GROUP_CONCAT(DISTINCT it2.title ORDER BY it2.title SEPARATOR "; ") AS parentTitles,
+					   it.recurdesc,
+					   its.deadline
+				FROM gtdphp_items it
+				JOIN gtdphp_itemstatus its
+				  ON it.itemId = its.itemId
+				 AND its.type = "a"
+				 AND its.isSomeday = "n"
+				 AND its.dateCompleted IS NULL
+				 AND its.nextAction = "y"
+				 AND (its.tickleDate <= CURDATE()
+				  OR its.tickledate IS NULL)
+				JOIN gtdphp_lookup lo
+				  ON lo.itemId = it.itemId
+				JOIN gtdphp_items it2
+				  ON lo.parentId = it2.itemId
+				JOIN gtdphp_itemstatus its2
+				  ON its2.itemId = lo.parentId
+				 AND its2.isSomeday = "n"
+				 AND (its2.tickledate IS NULL
+				  OR its2.tickledate <= CURDATE())
+				 AND its2.dateCompleted IS NULL
+				LEFT JOIN gtdphp_context co
+				  ON co.contextId = its.contextId
+				LEFT JOIN gtdphp_timeitems ti
+				  ON ti.timeframeId = its.timeframeId
 				GROUP BY it.itemId, co.name, it.title, its.deadline, it.description, it.recurdesc, ti.timeframe
-				ORDER BY co.name, it.title';
+				)
+				ORDER BY contextName, title
+			';
 		
-		$rs = \F3::get('db')->exec($sql);
+		$rs = \F3::get('db')->query($sql);
 
 		$actions = array();
         
