@@ -39,7 +39,7 @@ if (isset($parentItems))
     <tr>
         <td colspan="2">
             <label for="isNext">
-                <input type="checkbox" id="isNext" checked="checked" name="isNext" data-default="on">
+                <input type="checkbox" id="isNext" checked="checked" name="isNext" data-default="checked">
                 <?php echo Base::instance()->get('lang.ItemNextActionLabel') ?>
             </label>
         </td>
