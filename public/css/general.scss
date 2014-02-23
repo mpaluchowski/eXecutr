@@ -447,6 +447,11 @@ table.report {
 			text-align: right;
 			white-space: nowrap;
 		}
+
+		.datepicker {
+			display: none;
+			position: absolute;
+		}
 	}
 
 	a {

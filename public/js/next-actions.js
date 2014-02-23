@@ -13,6 +13,7 @@ eXecutr.NextActions = function() {
 		$("#space-context-menu a").triggerContextMenu("div.", "#next-actions > form > div");
 
 		initInboxProcessKeyShort();
+		initCompleteOnDate();
 	},
 
 	initInboxProcessKeyShort = function() {
@@ -24,14 +25,32 @@ eXecutr.NextActions = function() {
 		});
 	},
 
-	completeAction = function(actionCheckbox) {
+	initCompleteOnDate = function() {
+		$(".complete-item > .datepicker").datepicker({
+			dateFormat: 'yy-mm-dd',
+			showAnim: '',
+			firstDay: 1,
+			onSelect: function(date) {
+				completeAction($(this).siblings('input:checkbox'), date);
+			}
+		});
+		$(".complete-item").hover(
+			function() { $('.datepicker:first', this).show() },
+			function() { $('.datepicker:first', this).hide() }
+			);
+	},
+
+	completeAction = function(actionCheckbox, date) {
 		var form = $(actionCheckbox).closest("form");
+
+		var args = { itemId: $(actionCheckbox).attr("value") };
+		if (undefined !== date) {
+			args.date = date;
+		}
 
 		$.post(
 			$(form).attr("action"),
-			{
-				itemId: $(actionCheckbox).attr("value")
-			},
+			args,
 			function(data) {
 				$(actionCheckbox).closest("tr").addClass("success")
 					.fadeOut(300, function() {

@@ -13,7 +13,10 @@
       <table class="report">
    <?php foreach ($actions as $action): ?>
       <tr class="time-context-<?php echo $action->timeContext ?>">
-        <td><input type="checkbox" name="itemId" value="<?php echo $action->actionId ?>"/></td>
+        <td class="complete-item">
+          <input type="checkbox" name="itemId" value="<?php echo $action->actionId ?>"/>
+          <div class="datepicker"></div>
+        </td>
         <td>
             <a href="#" class="table-cell-button"><?php echo $action->title ?></a>
             <div class="properties-float"><div class="inner-float">

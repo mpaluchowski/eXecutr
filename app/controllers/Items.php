@@ -369,7 +369,11 @@ class Items
 		$itemId = $f3->get('POST.itemId');
 
 		$actionModel = new \models\Action();
-		$actionModel->markItemCompleted($itemId);
+
+		if ($f3->exists('POST.date'))
+			$actionModel->markItemCompleted($itemId, $f3->get('POST.date'));
+		else
+			$actionModel->markItemCompleted($itemId);
 
 		die;
 	}

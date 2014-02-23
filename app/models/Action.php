@@ -227,8 +227,9 @@ class Action {
 	 * 
 	 * @param $itemId ID of the item to be marked as completed.
 	 */
-	public function markItemCompleted($itemId) {
-	    $completionDate = date('Y-m-d');
+	public function markItemCompleted($itemId, $completionDate = null) {
+		if (null == $completionDate)
+			$completionDate = date('Y-m-d');
 	    
 	    /* Select the completed item to check for recurrence */
 	    $query = 'SELECT it.recur, its.deadline, its.tickledate
