@@ -34,10 +34,6 @@ eXecutr.NextActions = function() {
 				completeAction($(this).siblings('input:checkbox'), date);
 			}
 		});
-		$(".complete-item").hover(
-			function() { $('.datepicker:first', this).show() },
-			function() { $('.datepicker:first', this).hide() }
-			);
 	},
 
 	completeAction = function(actionCheckbox, date) {

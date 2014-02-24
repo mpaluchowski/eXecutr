@@ -448,6 +448,10 @@ table.report {
 			white-space: nowrap;
 		}
 
+		&.complete-item:hover .datepicker {
+			display: block;
+		}
+
 		.datepicker {
 			display: none;
 			position: absolute;
