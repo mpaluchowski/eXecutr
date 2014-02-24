@@ -449,12 +449,20 @@ table.report {
 		}
 
 		&.complete-item:hover .datepicker {
-			display: block;
+			height: auto;
+			opacity: 1;
+			transition-delay: 1s;
+			-webkit-transition-delay: 1s;
 		}
 
 		.datepicker {
-			display: none;
+			display: block;
+			height: 0;
+			opacity: 0;
+			overflow: hidden;
 			position: absolute;
+			transition: opacity 0s ease-out;
+			-webkit-transition: opacity 0s ease-out;
 		}
 	}
 
