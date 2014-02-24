@@ -57,7 +57,10 @@
     <table class="report">
 <?php foreach($waitingFors as $waitingFor): ?>
     <tr>
-      <td><input type="checkbox" name="itemId" value="<?php echo $waitingFor->actionId ?>"/></td>
+      <td class="complete-item">
+        <input type="checkbox" name="itemId" value="<?php echo $waitingFor->actionId ?>"/>
+        <div class="datepicker"></div>
+      </td>
       <td>
         <a href="#" class="table-cell-button"><?php echo $waitingFor->title ?></a>
         <div class="properties-float"><div class="inner-float">
