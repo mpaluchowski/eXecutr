@@ -447,24 +447,6 @@ table.report {
 			text-align: right;
 			white-space: nowrap;
 		}
-
-		&.complete-item:hover .datepicker {
-			height: auto;
-			opacity: 1;
-			transition-delay: 1s;
-			-webkit-transition-delay: 1s;
-		}
-
-		.datepicker {
-			display: block;
-			height: 0;
-			opacity: 0;
-			overflow: hidden;
-			position: absolute;
-			transition: opacity 0s ease-out;
-			-webkit-transition: opacity 0s ease-out;
-			z-index: 120;
-		}
 	}
 
 	a {
@@ -565,6 +547,26 @@ a.recurrence-button {
     }
 }
 
+.complete-item {
+	.datepicker {
+		display: block;
+		height: 0;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		transition: opacity 0s ease-out;
+		-webkit-transition: opacity 0s ease-out;
+		z-index: 120;
+	}
+
+	&:hover .datepicker {
+		height: auto;
+		opacity: 1;
+		transition-delay: 1s;
+		-webkit-transition-delay: 1s;
+	}
+}
+
 /* Weekly Review */
 
 ol.weekly-review {
@@ -614,8 +616,18 @@ ol.weekly-review {
 			font-size: 1.2em;
 			margin: .5em 0 .5em 26px;
 		}
+
+		li > form > table {
+			margin: .5em 0;
+
+			tbody > tr > td {
+				font-size: 1.2em;
+				padding: .1em 0 .1em .4em;
+				vertical-align: middle;
+			}
+		}
 		
-		span {
+		li > span {
 			display: inline-block;
 			background: #f5f5f5;
 			border-radius: 5px;

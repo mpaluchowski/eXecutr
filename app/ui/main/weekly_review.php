@@ -35,11 +35,21 @@
 			<ul>
 				<li>
 					<span><?php echo Base::instance()->get('lang.ActionsPastDueNumber', count($actionsPastDue)) ?> </span>
-					<ul>
+					<form method="post" action="items/mark_completed" class="completion-form">
+					<table>
 <?php foreach ($actionsPastDue as $action): ?>
-						<li><?php echo $action->title ?> (<?php echo \helpers\HumaneDateView::getHumanReadable($action->deadline) ?>)</li>
+						<tr>
+							<td class="complete-item">
+								<input type="checkbox" name="itemId" value="<?php echo $action->id ?>"/>
+								<div class="datepicker"></div>
+							</td>
+							<td>
+								<?php echo $action->title ?> (<?php echo \helpers\HumaneDateView::getHumanReadable($action->deadline) ?>)
+							</td>
+						</tr>
 <?php endforeach; ?>
-					</ul>
+					</table>
+					</form>
 				</li>
 			</ul>
 		</li>
