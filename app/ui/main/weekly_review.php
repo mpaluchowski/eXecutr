@@ -67,11 +67,21 @@
 			<ul>
 				<li>
 					<span><?php echo Base::instance()->get('lang.WaitingForsPastDueNumber', count($waitingForsPastDue)) ?></span>
-					<ul>
+					<form method="post" action="items/mark_completed" class="completion-form">
+					<table>
 <?php foreach ($waitingForsPastDue as $waitingFor): ?>
-						<li><?php echo $waitingFor->title ?> (<?php echo \helpers\HumaneDateView::getHumanReadable($waitingFor->deadline) ?>)</li>
+						<tr>
+							<td class="complete-item">
+								<input type="checkbox" name="itemId" value="<?php echo $waitingFor->id ?>"/>
+								<div class="datepicker"></div>
+							</td>
+							<td>
+								<?php echo $waitingFor->title ?> (<?php echo \helpers\HumaneDateView::getHumanReadable($waitingFor->deadline) ?>)
+							</td>
+						</tr>
 <?php endforeach; ?>
-					</ul>
+					</table>
+					</form>
 				</li>
 			</ul>
 		</li>
