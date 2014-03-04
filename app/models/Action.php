@@ -243,47 +243,45 @@ class Action {
 	        /* It's a recurring item, need to handle this */
 	        /* First, copy the item */
 	        $newItemId = $this->copyItem($itemId);
-	        
+
 	        /* Second, check which date to recur from */
-	        if (preg_match("/^FREQ=(YEARLY|MONTHLY|WEEKLY|DAILY);INTERVAL=[0-9]+$/", $row['recur'])) {
-                /* very simple recurrence, so recur from dateCompleted */
-                $startdate = $completionDate;
-            } else if (empty($row['deadline']) || $row['deadline'] === 'NULL') {
-                /* no deadline, so recur from tickler if available, and fall
-                 * back to date completed */
-                $startdate = (empty($row['tickledate']))
-                    ? $completionDate
-                    : $row['tickledate'];
-            } else {
-                /* recur from deadline */
-                $startdate = $row['deadline'];
-            }
-            if (empty($startdate) || $startdate === 'NULL') {
-                /* if we still haven't got a start date, use today */
-                $startdate = $completionDate;
-            }
-	        
-            /* Fetch the next date */
+	        if ($row['tickledate']) {
+				/* Recur from tickledate, if present */
+				$startdate = $row['tickledate'];
+			} else if ($row['deadline']) {
+				/* Recur from deadline, as second choice */
+				$startdate = $row['deadline'];
+			} else {
+				/* Neither tickle date, nor deadline, just use the completion date */
+				$startdate = $completionDate;
+			}
+
+	        /* Fetch the next date */
 	        $newDate = \helpers\RecurrenceTool::getNextRecurrence(
                     $row['recur'], $startdate);
-            
+
             if (!empty($newDate)) {
-                /* Check which date we'll be updating - tickler or deadline */
-                if (empty($row['deadline']) || $row['deadline'] === 'NULL') {
-                    /* No deadline, so the new date becomes the tickle date */
-                    $tickleDate = $newDate;
-                    $deadline = null;
-                } else {
-                    /* New date becomes the deadline */
-                    if ($row['tickledate'] !== 'NULL') {
-                        /* Tickle date was present, so set it to the same amount
-                         * of time before the deadline as the original had */
-                        $tickleDate = date("Y-m-d" , strtotime($row['tickledate'])
-                                + (strtotime($newDate) - strtotime($row['deadline']))
-                                );
-                    }
-                    $deadline = $newDate;
-                }
+		        if ($row['tickledate']) {
+					/* New date becomes the tickle date */
+					$tickleDate = $newDate;
+
+					if ($row['deadline']) {
+						/* Set deadline to same space from tickle date */
+						$deadline = date("Y-m-d", strtotime($newDate)
+							+ strtotime($row['deadline']) - strtotime($row['tickledate'])
+							);
+					} else {
+						$deadline = null;
+					}
+		        } else if ($row['deadline']) {
+					/* No tickle date and the new date becomes the deadline */
+					$tickleDate = null;
+					$deadline = $newDate;
+				} else {
+					/* Neither tickle date nor deadline set */
+					$tickleDate = null;
+					$deadline = null;
+		        }
                 
                 /* Update the dates in the table */
                 $query = 'UPDATE ' . \F3::get('db_table_prefix') . 'itemstatus
