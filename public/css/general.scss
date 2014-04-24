@@ -616,22 +616,28 @@ ol.weekly-review {
 				}
 			}
 
-			li > form > table {
-				margin: .5em 0;
-
-				> tbody > tr > td {
-					font-size: 1.2em;
-					padding: .1em 0 .1em .4em;
-					vertical-align: middle;
+			li {
+				+ li {
+					margin-top: 8px;
 				}
-			}
-			
-			li > span {
-				display: inline-block;
-				background: #f5f5f5;
-				border-radius: 5px;
-				font-size: 1.2em;
-				padding: .4em .6em;
+
+				> form > table {
+					margin: .5em 0;
+
+					> tbody > tr > td {
+						font-size: 1.2em;
+						padding: .1em 0 .1em .4em;
+						vertical-align: middle;
+					}
+				}
+
+				> span {
+					display: inline-block;
+					background: #f5f5f5;
+					border-radius: 5px;
+					font-size: 1.2em;
+					padding: .4em .6em;
+				}
 			}
 		}
 	}
