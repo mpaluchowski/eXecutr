@@ -1,5 +1,5 @@
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -13,8 +13,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -26,7 +26,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -42,7 +42,7 @@ ol, ul {
 
 blockquote, q {
 	quotes: none;
-	
+
 	&:before, &:after {
 		content: '';
 		content: none;
@@ -231,12 +231,12 @@ input[type=text], textarea, select {
         background: #FFFABF;
         border-bottom-style: dashed;
     }
-    
+
     select.extended {
         background: #BFEEFF;
         border-bottom-style: dashed;
     }
-    
+
     input[type=text][disabled=disabled] {
         background: #FFF;
         border: 1px solid #000;
@@ -311,7 +311,7 @@ table.form {
 		margin-bottom: .6em;
 		text-align: center;
 	}
-	
+
 	tbody.extension {
 	   background: #F3FFDF;
 	}
@@ -337,7 +337,7 @@ ul.ui-autocomplete {
         font: 1.2em Tahoma, Verdana, Helvetica, Arial, sans-serif;
         padding: .25em .5em;
     }
-    
+
     a.ui-state-hover {
         background: #FFE900;
     }
@@ -442,7 +442,7 @@ table.report {
 		&:first-child {
 			width: 2.4em;
 		}
-		
+
 		&:last-child {
 			text-align: right;
 			white-space: nowrap;
@@ -455,7 +455,7 @@ table.report {
 
 	tr:hover {
 		background: #f0f0f0;
-		
+
 		> td > .properties-float {
 			display: block;
 		}
@@ -537,11 +537,11 @@ a.recurrence-button {
     &.soon {
         color: #EFAE00;
     }
-    
+
     &.past {
         color: #ff0000;
     }
-    
+
     &.today {
         color: #1AAF00;
     }
@@ -571,7 +571,7 @@ a.recurrence-button {
 
 ol.weekly-review {
 	margin: 2.4em 0 2.6em;
-	
+
 	&:first-of-type {
 		counter-reset: li;
 	}
